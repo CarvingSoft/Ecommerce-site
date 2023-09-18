@@ -4,9 +4,9 @@ const user = require('./router/user')
 const role = require('./router/role')
 
 
- const syncModel = require("./utilities/association")
+const syncModel = require("./utilities/association")
 
-
+//
 
 const { Sequelize } = require('sequelize');
 app.use(express.json());
