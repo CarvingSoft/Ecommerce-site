@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const User = require("../models/user")
+const User = require('../models/user')
 
 router.post('/',async(req,res)=>{
     try {
@@ -30,13 +30,39 @@ router.get('/',async(req,res)=>{
     }
 })
 
-router.patch('/',async()=>{
+router.get('/:id', async(req,res)=>{
     try {
-        const user = await user.update(req.body,{where:{id:req.params.id}})
-        res.send(user)
+        
+        const user = await User.findOne ( {where : { id:req.params.id}})
+        res.send(user)   
+        
     } catch (error) {
-        res.send(error.message)
+        res.send(error)
     }
+  })
+
+router.patch('/:id', async(req,res)=>{
+    try {
+        User.update(req.body, {
+            where: { id: req.params.id }
+          })
+            .then(num => {
+              if (num == 1) {
+                res.send({
+                  message: "Updated"
+                });
+              } else {
+                res.send({
+                  message: `Cannot update `
+                });
+              }
+            })
+      } catch (error) {
+        res.status(500).json({
+          status: "error",
+          message: error.message,
+        });
+      }
 })
 
 

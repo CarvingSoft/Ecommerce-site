@@ -15,6 +15,10 @@ const User = sequelize.define('User', {
   lastName: {
     type: DataTypes.STRING
     // allowNull defaults to true
+  },
+  roleId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   }
 }, {
     freezeTableName : true

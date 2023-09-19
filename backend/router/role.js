@@ -13,4 +13,13 @@ router.post('/',async(req,res)=>{
     }
 })
 
+router.get('/',async(req,res)=>{
+    try {
+        const role = await Role.findAll({})
+        res.send(role);
+    } catch (error) {
+        res.send(error.message);
+    }
+})
+
 module.exports = router;
