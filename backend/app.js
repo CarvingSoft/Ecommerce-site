@@ -2,6 +2,7 @@ const express = require ('express');
 const app= express()
 const user = require('./router/user')
 const role = require('./router/role')
+//const role = require('./router/role')
 
 
 const syncModel = require("./utilities/association")
