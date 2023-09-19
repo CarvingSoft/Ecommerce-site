@@ -4,7 +4,7 @@ const user = require('./router/user')
 const role = require('./router/role')
 
 
- const syncModel = require("./utilities/association")
+const syncModel = require("./utilities/association")
 
 
 
@@ -14,6 +14,7 @@ app.use('/user',user);
 app.use('/role',role)
 
 
+//app.use('/role',role)
 // const sequelize = new Sequelize('admitezy_db', 'admitezy', 'admitezy', {
 //     host: 'localhost',
 //     dialect: "postgres"
