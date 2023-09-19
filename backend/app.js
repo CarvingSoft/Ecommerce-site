@@ -6,7 +6,7 @@ const role = require('./router/role')
 
 const syncModel = require("./utilities/association")
 
-//
+
 
 const { Sequelize } = require('sequelize');
 app.use(express.json());
@@ -14,6 +14,7 @@ app.use('/user',user);
 app.use('/role',role)
 
 
+//app.use('/role',role)
 // const sequelize = new Sequelize('admitezy_db', 'admitezy', 'admitezy', {
 //     host: 'localhost',
 //     dialect: "postgres"
