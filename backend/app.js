@@ -19,7 +19,7 @@ app.use('/uom',uom);
 app.use('/product',product);
 app.use('/stock',stock);
 
-//app.use('/role',role)
+
 // const sequelize = new Sequelize('admitezy_db', 'admitezy', 'admitezy', {
 //     host: 'localhost',
 //     dialect: "postgres"
