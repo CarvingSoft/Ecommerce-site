@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
-const Product = require('../models/product')
+const Product = require('../models/product');
+const Stock = require('../models/stock');
 
 router.post('/',async(req,res)=>{
     try {
@@ -26,7 +27,7 @@ router.post('/',async(req,res)=>{
 
 router.get('/',async(req,res)=>{
     try {
-        const product = await Product.findAll({})
+        const product = await Product.findAll({include : Stock})
         res.send(product)
     } catch (error) {
         res.send(error.message)

@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
-const User = require('../models/user')
+const User = require('../models/user');
+const Role = require('../models/role');
 
 router.post('/',async(req,res)=>{
     try {
@@ -23,7 +24,7 @@ router.post('/',async(req,res)=>{
 
 router.get('/',async(req,res)=>{
     try {
-        const user = await User.findAll({})
+        const user = await User.findAll({include : Role})
         res.send(user);
     } catch (error) {
         res.send(error.message);
@@ -65,6 +66,26 @@ router.patch('/:id', async(req,res)=>{
       }
 })
 
+router.delete('/:id', async(req,res)=>{
+  try {
 
+      const result = await User.destroy({
+          where: { id: req.params.id },
+          force: true,
+      });
+
+      if (result === 0) {
+          return res.status(404).json({
+            status: "fail",
+            message: "Not found",
+          });
+        }
+    
+        res.status(204).json();
+      }  catch (error) {
+      res.send({error: error.message})
+  }
+  
+})
 
 module.exports = router;

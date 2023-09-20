@@ -2,7 +2,7 @@ const {DataTypes} = require ('sequelize')
 
 const sequelize = require("../utilities/db")
 
-const Stock = sequelize.define('Stock',{
+const Stock = sequelize.define('stock',{
    productId: {
         type: DataTypes.INTEGER,
         allowNull: false

@@ -2,7 +2,7 @@ const {DataTypes} = require ('sequelize')
 
 const sequelize = require("../utilities/db")
 
-const Uom = sequelize.define('Uom',{
+const Uom = sequelize.define('uom',{
    uomName: {
         type: DataTypes.STRING,
         allowNull: false

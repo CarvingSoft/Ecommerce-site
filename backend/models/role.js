@@ -2,7 +2,7 @@ const {DataTypes} =require('sequelize')
 
 const sequelize =require('../utilities/db')
 
-const Role = sequelize.define("Role",{
+const Role = sequelize.define('role',{
     roleName:{
         type:DataTypes.STRING,
         allowNull:false}

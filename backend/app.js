@@ -7,7 +7,7 @@ const product = require('./router/product')
 const stock = require('./router/stock')
 
 
-const syncModel = require("./utilities/association")
+const syncModel = require('./utilities/association')
 
 
 
