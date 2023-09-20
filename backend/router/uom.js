@@ -1,32 +1,39 @@
-const express = require ("express");
-const router = express.Router()
-const Role = require("../models/role")
+const express = require('express')
+const router = express.Router();
+const Uom = require('../models/uom')
 
 router.post('/',async(req,res)=>{
     try {
-        const {roleName} = req.body
-        const role = new Role({roleName})
-        await role.save()
-        res.send(role)
+        console.log(req.body)
+        const {uomName,abbreviation} = req.body
+        const uom = new Uom({
+            uomName: uomName,
+            abbreviation: abbreviation
+        })
+        await uom.save();
+        console.log(uom)
+        res.status(200).send(uom)
     } catch (error) {
-       res.send(error.message) 
+        res.send({
+            error: error.message
+        });
     }
 })
 
 router.get('/',async(req,res)=>{
     try {
-        const role = await Role.findAll({})
-        res.send(role);
+        const uom = await Uom.findAll({})
+        res.send(uom)
     } catch (error) {
-        res.send(error.message);
+        res.send(error.message)
     }
 })
 
 router.get('/:id', async(req,res)=>{
     try {
         
-        const role = await Role.findOne ( {where : { id:req.params.id}})
-        res.send(role)   
+        const uom = await Uom.findOne ( {where : { id:req.params.id}})
+        res.send(uom)   
         
     } catch (error) {
         res.send(error)
@@ -37,7 +44,7 @@ router.get('/:id', async(req,res)=>{
   
 router.patch('/:id', async(req,res)=>{
     try {
-        Role.update(req.body, {
+        Uom.update(req.body, {
             where: { id: req.params.id }
           })
             .then(num => {
@@ -62,7 +69,7 @@ router.patch('/:id', async(req,res)=>{
 router.delete('/:id', async(req,res)=>{
     try {
 
-        const result = await Role.destroy({
+        const result = await Uom.destroy({
             where: { id: req.params.id },
             force: true,
         });
@@ -80,5 +87,6 @@ router.delete('/:id', async(req,res)=>{
     }
     
 })
+
 
 module.exports = router;

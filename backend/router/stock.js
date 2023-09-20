@@ -1,32 +1,40 @@
-const express = require ("express");
-const router = express.Router()
-const Role = require("../models/role")
+const express = require('express')
+const router = express.Router();
+const Stock = require('../models/stock')
 
 router.post('/',async(req,res)=>{
     try {
-        const {roleName} = req.body
-        const role = new Role({roleName})
-        await role.save()
-        res.send(role)
+        console.log(req.body)
+        const {productId,quantity,unit} = req.body
+        const stock = new Stock({
+            productId: productId,
+            quantity: quantity,
+            unit: unit
+        })
+        await stock.save();
+        console.log(stock)
+        res.status(200).send(stock)
     } catch (error) {
-       res.send(error.message) 
+        res.send({
+            error: error.message
+        });
     }
 })
 
 router.get('/',async(req,res)=>{
     try {
-        const role = await Role.findAll({})
-        res.send(role);
+        const stock = await Stock.findAll({})
+        res.send(stock)
     } catch (error) {
-        res.send(error.message);
+        res.send(error.message)
     }
 })
 
 router.get('/:id', async(req,res)=>{
     try {
         
-        const role = await Role.findOne ( {where : { id:req.params.id}})
-        res.send(role)   
+        const stock = await Stock.findOne ( {where : { id:req.params.id}})
+        res.send(stock)   
         
     } catch (error) {
         res.send(error)
@@ -37,7 +45,7 @@ router.get('/:id', async(req,res)=>{
   
 router.patch('/:id', async(req,res)=>{
     try {
-        Role.update(req.body, {
+        Stock.update(req.body, {
             where: { id: req.params.id }
           })
             .then(num => {
@@ -62,7 +70,7 @@ router.patch('/:id', async(req,res)=>{
 router.delete('/:id', async(req,res)=>{
     try {
 
-        const result = await Role.destroy({
+        const result = await Stock.destroy({
             where: { id: req.params.id },
             force: true,
         });
@@ -80,5 +88,6 @@ router.delete('/:id', async(req,res)=>{
     }
     
 })
+
 
 module.exports = router;
