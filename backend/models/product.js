@@ -9,7 +9,7 @@ const Product = sequelize.define('product',{
    },
    brandId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        //allowNull: false
    },
    description: {
     type: DataTypes.STRING
@@ -19,11 +19,11 @@ const Product = sequelize.define('product',{
    },
    categoryId: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    //allowNull: false
    },
    stockId: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    //allowNull: false
    }
 },
 {

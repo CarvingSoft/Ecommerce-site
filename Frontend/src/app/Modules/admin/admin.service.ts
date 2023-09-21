@@ -18,5 +18,8 @@ export class AdminService {
   getRoleById(id: string): Observable<Role>{
     return this._http.get<Role>(this.url +'/role/'+id);
   }
+  addProduct(data: any) {
+    return this._http.post(this.url + '/product', data)
+  }
 
 }
