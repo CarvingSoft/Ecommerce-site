@@ -3,6 +3,9 @@ const app= express()
 const cors = require('cors')
 const user = require('./router/user')
 const role = require('./router/role')
+const  brand = require('./router/brand')
+const cart = require('./router/cart')
+const cartDetails =require('./router/cartDetails')
 const uom = require('./router/uom')
 const product = require('./router/product')
 const stock = require('./router/stock')
@@ -16,7 +19,10 @@ const { Sequelize } = require('sequelize');
 app.use(express.json());
 app.use(cors({orgin:'*'}))
 app.use('/user',user);
-app.use('/role',role);
+app.use('/role',role)
+app.use('/brand',brand)
+app.use('/cart',cart)
+app.use('/cartdetails',cartDetails)
 app.use('/uom',uom);
 app.use('/product',product);
 app.use('/stock',stock);

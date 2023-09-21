@@ -1,7 +1,7 @@
 const {DataTypes} = require ('sequelize')
 
 
-const sequelize = require("../utilities/db")
+const sequelize = require('../utilities/db')
 
 
 
@@ -16,9 +16,9 @@ const User = sequelize.define('user', {
     type: DataTypes.STRING
     // allowNull defaults to true
   },
+
   roleId: {
-    type: DataTypes.INTEGER,
-    allowNull: false
+    type: DataTypes.INTEGER
   }
 }, {
     freezeTableName : true
