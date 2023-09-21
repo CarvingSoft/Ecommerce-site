@@ -11,7 +11,7 @@ export class SettingsComponent {
   constructor(public dialog: MatDialog) {}
   manageProduct(){
     const dialogRef = this.dialog.open(ProductComponent, {
-      height: '160px',
+      height: '560px',
       width: '900px',
     });
 

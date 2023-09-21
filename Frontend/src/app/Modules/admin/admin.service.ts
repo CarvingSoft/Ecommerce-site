@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 
 import { Role } from './models/role';
+import { Product } from './models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,9 @@ export class AdminService {
   }
   addProduct(data: any) {
     return this._http.post(this.url + '/product', data)
+  }
+  getProduct(): Observable<Product[]> {
+    return this._http.get<Product[]>(this.url + '/product');
   }
 
 }
