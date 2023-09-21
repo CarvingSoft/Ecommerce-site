@@ -2,8 +2,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, map, shareReplay } from 'rxjs';
-import { AuthService } from '../../auth/auth.service';
-import { AdminService } from '../admin.service';
+import { AuthService } from '../../../../auth/auth.service';
+import { AdminService } from '../../../admin.service';
 
 @Component({
   selector: 'app-navbar',

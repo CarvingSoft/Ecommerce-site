@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { UserManageComponent } from './user-manage/user-manage.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { NavbarComponent } from './components/HOME/navbar/navbar.component';
+import { DashboardComponent } from './components/HOME/dashboard/dashboard.component';
+import { SettingsComponent } from './components/SETTINGS/settings/settings.component';
 
 
 
@@ -16,7 +17,7 @@ const routes: Routes = [
   {path: 'home', component: DashboardComponent},
 
    {path: 'user', component: UserManageComponent},
-
+    {path: 'settings', component: SettingsComponent}
 
   ]
  }
