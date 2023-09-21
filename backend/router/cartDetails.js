@@ -1,44 +1,51 @@
-const express = require ("express");
-const router = express.Router()
-const Role = require('../models/role')
+const CartDetails = require ('../models/cartDetails')//couldnt get the path
+const express = require ('express');
+const router = express();
 
 router.post('/',async(req,res)=>{
-    try {
-        const {roleName} = req.body
-        const role = new Role({roleName})
-        await role.save()
-        res.send(role)
-    } catch (error) {
-       res.send(error.message) 
+    try{
+        const {productId,quantity,unit,subTotal} = req.body
+        const cartDetails = new CartDetails({
+           
+            productId: productId,
+            quantity: quantity,
+            unit: unit ,
+            subTotal:subTotal
+            
+    }
+    )
+await cartDetails.save()
+
+res.send(cartDetails)
+}
+catch(error){
+    console.log(error)  
     }
 })
 
-router.get('/',async(req,res)=>{
+router.get('/', async(req,res)=>{
     try {
-        const role = await Role.findAll()
-        res.send(role)
+        const cartDetails = await CartDetails.findAll()
+        res.send(cartDetails)
     } catch (error) {
-        res.send(error)
+        res.send(error.msg)
     }
- 
 })
 
 router.get('/:id', async(req,res)=>{
     try {
         
-        const role = await Role.findOne ( {where : { id:req.params.id}})
-        res.send(role)   
+        const cartDetails = await CartDetails.findOne ( {where : { id:req.params.id}})
+        res.send(cartDetails)   
         
     } catch (error) {
         res.send(error)
     }
-  })
+})
 
-
-  
 router.patch('/:id', async(req,res)=>{
     try {
-        Role.update(req.body, {
+        CartDetails.update(req.body, {
             where: { id: req.params.id }
           })
             .then(num => {
@@ -63,7 +70,7 @@ router.patch('/:id', async(req,res)=>{
 router.delete('/:id', async(req,res)=>{
     try {
 
-        const result = await Role.destroy({
+        const result = await CartDetails.destroy({
             where: { id: req.params.id },
             force: true,
         });
@@ -79,7 +86,6 @@ router.delete('/:id', async(req,res)=>{
         }  catch (error) {
         res.send({error: error.message})
     }
-    
 })
 
-module.exports = router;
+module.exports = router

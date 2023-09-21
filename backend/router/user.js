@@ -24,7 +24,7 @@ router.post('/',async(req,res)=>{
 
 router.get('/',async(req,res)=>{
     try {
-        const user = await User.findAll({include : Role})
+        const user = await User.findAll({include:Role})
         res.send(user);
     } catch (error) {
         res.send(error.message);

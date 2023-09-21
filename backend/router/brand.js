@@ -1,44 +1,40 @@
-const express = require ("express");
-const router = express.Router()
-const Role = require('../models/role')
+const Brand = require ('../models/brand')
+const express = require ('express');
+const router = express();
+
 
 router.post('/',async(req,res)=>{
-    try {
-        const {roleName} = req.body
-        const role = new Role({roleName})
-        await role.save()
-        res.send(role)
-    } catch (error) {
-       res.send(error.message) 
-    }
+  try {
+      const {brandName} = req.body
+      const brand = new Brand({brandNameclae})
+      await brand.save()
+      res.send(brand)
+  } catch (error) {
+     res.send(error.message) 
+  }
 })
+
 
 router.get('/',async(req,res)=>{
     try {
-        const role = await Role.findAll()
-        res.send(role)
+        const brand = await Brand.findAll()
+        res.send(brand)
     } catch (error) {
         res.send(error)
     }
- 
 })
 
-router.get('/:id', async(req,res)=>{
+router.get('/:id',async(req,res)=>{
     try {
-        
-        const role = await Role.findOne ( {where : { id:req.params.id}})
-        res.send(role)   
-        
+        const brand = await Brand.findOne ({where: {id:req.params.id}})
     } catch (error) {
         res.send(error)
     }
-  })
+})
 
-
-  
 router.patch('/:id', async(req,res)=>{
     try {
-        Role.update(req.body, {
+        Brand.update(req.body, {
             where: { id: req.params.id }
           })
             .then(num => {
@@ -63,7 +59,7 @@ router.patch('/:id', async(req,res)=>{
 router.delete('/:id', async(req,res)=>{
     try {
 
-        const result = await Role.destroy({
+        const result = await Brand.destroy({
             where: { id: req.params.id },
             force: true,
         });
@@ -82,4 +78,4 @@ router.delete('/:id', async(req,res)=>{
     
 })
 
-module.exports = router;
+module.exports = router
