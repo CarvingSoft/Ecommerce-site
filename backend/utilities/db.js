@@ -1,7 +1,7 @@
 const { Sequelize} = require('sequelize');
 
 
-  const sequelize = new Sequelize('cfa_project_db','cfa_project','cfa_project',{
+  const sequelize = new Sequelize('admitezy','admitezy','admitezy',{
     host: 'localhost',
     dialect: "postgres"
   });
