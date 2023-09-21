@@ -1,6 +1,6 @@
 const express = require ("express");
 const router = express.Router()
-const Role = require("../models/role")
+const Role = require('../models/role')
 
 router.post('/',async(req,res)=>{
     try {
@@ -12,5 +12,15 @@ router.post('/',async(req,res)=>{
        res.send(error.message) 
     }
 })
+
+router.get('/',async(req,res)=>{
+    try {
+        const role = await Role.findAll()
+        res.send(role)
+    } catch (error) {
+        res.send(error)
+    }
+})
+
 
 module.exports = router;

@@ -1,12 +1,12 @@
 const {DataTypes} = require ('sequelize')
 
 
-const sequelize = require("../utilities/db")
+const sequelize = require('../utilities/db')
 
 
 
 
-const User = sequelize.define('User', {
+const User = sequelize.define('user', {
   // Model attributes are defined here
   firstName: {
     type: DataTypes.STRING,
@@ -15,6 +15,10 @@ const User = sequelize.define('User', {
   lastName: {
     type: DataTypes.STRING
     // allowNull defaults to true
+  },
+
+  roleId: {
+    type: DataTypes.INTEGER
   }
 }, {
     freezeTableName : true
