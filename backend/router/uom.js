@@ -1,50 +1,50 @@
 const express = require('express')
 const router = express.Router();
-const User = require('../models/user');
-const Role = require('../models/role');
+const Uom = require('../models/uom')
 
 router.post('/',async(req,res)=>{
     try {
         console.log(req.body)
-        const {firstName,lastName,roleId} = req.body;
-        const user = new User({
-            firstName: firstName,
-            lastName: lastName,
-            roleId: roleId
+        const {uomName,abbreviation} = req.body
+        const uom = new Uom({
+            uomName: uomName,
+            abbreviation: abbreviation
         })
-        await user.save();
-        console.log(user)
-        res.status(200).send(user)
+        await uom.save();
+        console.log(uom)
+        res.status(200).send(uom)
     } catch (error) {
         res.send({
-            error:error.message
+            error: error.message
         });
     }
 })
 
 router.get('/',async(req,res)=>{
     try {
-        const user = await User.findAll({include:Role})
-        res.send(user);
+        const uom = await Uom.findAll({})
+        res.send(uom)
     } catch (error) {
-        res.send(error.message);
+        res.send(error.message)
     }
 })
 
 router.get('/:id', async(req,res)=>{
     try {
         
-        const user = await User.findOne ( {where : { id:req.params.id}})
-        res.send(user)   
+        const uom = await Uom.findOne ( {where : { id:req.params.id}})
+        res.send(uom)   
         
     } catch (error) {
         res.send(error)
     }
   })
 
+
+  
 router.patch('/:id', async(req,res)=>{
     try {
-        User.update(req.body, {
+        Uom.update(req.body, {
             where: { id: req.params.id }
           })
             .then(num => {
@@ -67,25 +67,26 @@ router.patch('/:id', async(req,res)=>{
 })
 
 router.delete('/:id', async(req,res)=>{
-  try {
+    try {
 
-      const result = await User.destroy({
-          where: { id: req.params.id },
-          force: true,
-      });
+        const result = await Uom.destroy({
+            where: { id: req.params.id },
+            force: true,
+        });
 
-      if (result === 0) {
-          return res.status(404).json({
-            status: "fail",
-            message: "Not found",
-          });
-        }
+        if (result === 0) {
+            return res.status(404).json({
+              status: "fail",
+              message: "Not found",
+            });
+          }
+      
+          res.status(204).json();
+        }  catch (error) {
+        res.send({error: error.message})
+    }
     
-        res.status(204).json();
-      }  catch (error) {
-      res.send({error: error.message})
-  }
-  
 })
+
 
 module.exports = router;

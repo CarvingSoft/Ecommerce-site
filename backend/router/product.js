@@ -1,33 +1,44 @@
-const express = require ("express");
-const router = express.Router()
-const Role = require('../models/role')
+const express = require('express')
+const router = express.Router();
+const Product = require('../models/product');
+const Stock = require('../models/stock');
 
 router.post('/',async(req,res)=>{
     try {
-        const {roleName} = req.body
-        const role = new Role({roleName})
-        await role.save()
-        res.send(role)
+        console.log(req.body)
+        const {name,brandId,description,price,categoryId,stockId} = req.body
+        const product = new Product({
+            name: name,
+            brandId: brandId,
+            description: description,
+            price: price,
+            categoryId: categoryId,
+            stockId: stockId
+        })
+        await product.save();
+        console.log(product)
+        res.status(200).send(product)
     } catch (error) {
-       res.send(error.message) 
+        res.send({
+            error: error.message
+        });
     }
 })
 
 router.get('/',async(req,res)=>{
     try {
-        const role = await Role.findAll()
-        res.send(role)
+        const product = await Product.findAll({include : Stock})
+        res.send(product)
     } catch (error) {
-        res.send(error)
+        res.send(error.message)
     }
- 
 })
 
 router.get('/:id', async(req,res)=>{
     try {
         
-        const role = await Role.findOne ( {where : { id:req.params.id}})
-        res.send(role)   
+        const product = await Product.findOne ( {where : { id:req.params.id}})
+        res.send(product)   
         
     } catch (error) {
         res.send(error)
@@ -38,7 +49,7 @@ router.get('/:id', async(req,res)=>{
   
 router.patch('/:id', async(req,res)=>{
     try {
-        Role.update(req.body, {
+        Product.update(req.body, {
             where: { id: req.params.id }
           })
             .then(num => {
@@ -63,7 +74,7 @@ router.patch('/:id', async(req,res)=>{
 router.delete('/:id', async(req,res)=>{
     try {
 
-        const result = await Role.destroy({
+        const result = await Product.destroy({
             where: { id: req.params.id },
             force: true,
         });
@@ -81,5 +92,6 @@ router.delete('/:id', async(req,res)=>{
     }
     
 })
+
 
 module.exports = router;
