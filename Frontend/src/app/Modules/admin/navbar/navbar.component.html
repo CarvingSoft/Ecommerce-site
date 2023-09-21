@@ -1,0 +1,50 @@
+<mat-sidenav-container autosize class="sidenav-container">
+  <!-- <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false"> -->
+  <mat-sidenav class="sidenav" [ngClass]="{'rotated': isExpanded}" #sidenav mode="side" opened="true">
+    <mat-toolbar>
+      <span *ngIf="isExpanded" style="margin-right: 8px;">
+        <img style="width: 100%; height: 100%;" src="../../../../assets/img/images.png" routerLink="home">
+      </span>
+      <span *ngIf="!isExpanded" style="margin-right: 8px;">
+        <img style="width: 100%; height: 100%;" src="../../../../assets/img/images.png" routerLink="home">
+      </span>
+      <span class="material-icons chevron_icon" style="color: rgb(56, 121, 151); font-size: 25px;"
+      (click)="isExpanded = !isExpanded"[ngClass]="{'rotated': isExpanded}">chevron_right</span>
+    </mat-toolbar>
+    <mat-nav-list>
+
+      <mat-list-item style="margin-left: 9px;" [routerLinkActive]="['active']" routerLink="home">
+        <span class="material-icons" style="color:pink; font-size: 25px; margin-right: 5px;">dashboard</span>
+        <a *ngIf="isExpanded">Dashboard</a>
+      </mat-list-item>
+
+      <mat-list-item style="margin-left: 9px;" [routerLinkActive]="['active']" routerLink="user">
+        <span class="material-icons" style="color: pink; font-size: 25px; margin-right: 5px;">group_add</span>
+        <a *ngIf="isExpanded">User</a>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar style="background-color:  pink; color: white;" >
+
+      <span>ERP</span>
+      <div class="nav_main">
+        <h1> Hi {{usernameNow}}</h1>
+
+          <span class="material-icons">notifications</span>
+          <mat-icon class="nav_username" routerLink="settings">settings</mat-icon>
+          <mat-icon class="nav_username">power_settings_new</mat-icon>
+
+        </div>
+    </mat-toolbar>
+
+
+   <div class="content-section">
+    <router-outlet></router-outlet>
+   </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
