@@ -5,6 +5,8 @@
         <mat-icon>arrow_back</mat-icon>
       </button>
     </mat-toolbar>
+
+   
     
     <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
       <mat-card class="background">
@@ -19,20 +21,23 @@
                 </mat-error>
               </mat-form-field>
             </div>
-          </div>
+          
 
-          <div class="row">
+          
             <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="brandId" formControlName="brandId">
-                <mat-error *ngIf="productForm.controls['brandId'].hasError('required')">
-                  productBrand <strong>required</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </div>
+                <mat-form-field appearance="fill" class="full-width-category">
+                  <mat-label>Brand</mat-label>
+                  <mat-select formControlName="brandId">
+                    <mat-option *ngFor="let item of brand$  | async" [value]="item.id">
+                      {{item.brandName}}
+                    </mat-option> 
+                  </mat-select>
+                  <mat-error *ngIf="productForm.controls['brandId'].hasError('required')">
+                    Brand is<strong>required</strong>
+                  </mat-error>
+                </mat-form-field></div>
+        
 
-          <div class="row">
             <div class="col">
               <mat-form-field class="full-width">
                 <input matInput placeholder="description" formControlName="description">
@@ -52,9 +57,9 @@
                 </mat-error>
               </mat-form-field>
             </div>
-          </div>
+          
 
-          <div class="row">
+          
             <div class="col">
               <mat-form-field class="full-width">
                 <input matInput placeholder="categoryId" formControlName="categoryId">
@@ -63,17 +68,24 @@
                 </mat-error>
               </mat-form-field>
             </div>
-          </div>
-
-          <div class="row">
+          
             <div class="col">
+                <div class="full-width" appearance="fill">
+                  <label>Attach Image:</label><br><br>
+                  <input type="file" (change)="onFileSelected($event)">
+          
+                  <button mat-raised-button type="button" color="accent" (click)="onUpload()" [disabled]="!uploadStatus">upload</button>
+                  <br>
+                </div>
+                </div>
+            <!-- <div class="col">
               <mat-form-field class="full-width">
                 <input matInput placeholder="stockId" formControlName="stockId">
                 <mat-error *ngIf="productForm.controls['stockId'].hasError('required')">
                   productStock <strong>required</strong>
                 </mat-error>
               </mat-form-field>
-            </div>
+            </div> -->
           </div>
   
   
@@ -87,7 +99,7 @@
         </div> -->
      
         <mat-card-actions>
-          <button mat-raised-button color="primary" type="submit" [disabled]="!productForm.valid">ADD</button>&nbsp;&nbsp;
+          <button mat-raised-button color="primary" type="submit">ADD</button>&nbsp;&nbsp;
           <!-- <button *ngIf="isEdit" color="primary"   mat-raised-button type="button" [disabled]="!productForm.valid" (click)="edit()">UPDATE</button>&nbsp;&nbsp; -->
           <!-- <button mat-mini-fab color="primary" aria-label="Example icon button with a home icon" (click)="onCancelClick()">
             <mat-icon>arrow_back</mat-icon>
@@ -107,8 +119,8 @@
        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
      </ng-container>
      <ng-container matColumnDef="brandId">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Brand ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.brandId}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Brand </th>
+        <td mat-cell *matCellDef="let element"> {{element.brand.brandName}} </td>
       </ng-container>
       <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Description </th>
@@ -122,10 +134,23 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Category ID </th>
         <td mat-cell *matCellDef="let element"> {{element.categoryId}} </td>
       </ng-container>
-      <ng-container matColumnDef="stockId">
+      <ng-container matColumnDef="file_url">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
+        <td mat-cell *matCellDef="let element">
+    
+          <ng-container *ngIf="element.file_url; else alternativeImage">
+            <img  src="{{ element.file_url }}" style="width: 50px; height: 50px;" />
+          </ng-container>
+          
+          <ng-template #alternativeImage>
+            <img src="../../../../../../assets/img/no_image.jpeg" alt="Alternative Image" style="width: 50px; height: 50px;" />
+          </ng-template>
+        </td>
+      </ng-container>
+      <!-- <ng-container matColumnDef="stockId">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Stock ID </th>
         <td mat-cell *matCellDef="let element"> {{element.stockId}} </td>
-      </ng-container>
+      </ng-container> -->
       
   
     <ng-container matColumnDef="action">

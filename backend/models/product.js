@@ -21,16 +21,19 @@ const Product = sequelize.define('product',{
     type: DataTypes.INTEGER,
     //allowNull: false
    },
-   stockId: {
-    type: DataTypes.INTEGER,
-    //allowNull: false
-   }
+//    stockId: {
+//     type: DataTypes.INTEGER,
+//     //allowNull: false
+ //  },
+   cloudinary_id : {type:DataTypes.STRING},
+   file_url : {type:DataTypes.STRING}
 },
 {
     freezeTableName: true
 }
 
 );
+
 
 
 module.exports = Product;

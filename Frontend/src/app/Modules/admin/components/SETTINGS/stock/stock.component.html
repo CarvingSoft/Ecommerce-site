@@ -1,0 +1,109 @@
+<mat-toolbar style="color:bg-blue-900">
+    <br>
+      <p style="color:#1f3a8a"> ADD Stock</p>
+      <button mat-mini-fab color="primary" type="button" style="margin-left: auto;" aria-label="Example icon button with a home icon" class="d-block mr-0 ml-auto" (click)="onCancelClick()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    </mat-toolbar>
+    
+    <form [formGroup]="stockForm" (ngSubmit)="onSubmit()">
+      <mat-card class="background">
+        <mat-card-content >
+    
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="productId" formControlName="productId">
+                <mat-error *ngIf="stockForm.controls['productId'].hasError('required')">
+                    productId <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            </div>
+
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="quantity" formControlName="quantity">
+                    <mat-error *ngIf="stockForm.controls['quantity'].hasError('required')">
+                        quantity <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                </div>
+
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width">
+                     <input matInput placeholder="unit" formControlName="unit">
+                        <mat-error *ngIf="stockForm.controls['unit'].hasError('required')">
+                            unit <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    </div>
+            
+
+          
+  
+  
+          <!-- <div class="row">
+            <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Remarks</mat-label>
+              <textarea matInput placeholder="" formControlName="remarks" ></textarea>
+            </mat-form-field>
+          </div>
+        </div> -->
+     
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!stockForm.valid">ADD</button>&nbsp;&nbsp;
+          <!-- <button *ngIf="isEdit" color="primary"   mat-raised-button type="button" [disabled]="!stockForm.valid" (click)="edit()">UPDATE</button>&nbsp;&nbsp; -->
+          <!-- <button mat-mini-fab color="primary" aria-label="Example icon button with a home icon" (click)="onCancelClick()">
+            <mat-icon>arrow_back</mat-icon>
+           </button> -->
+        <!-- </button> -->
+        </mat-card-actions>
+        </mat-card-content>
+        </mat-card>
+      <!-- </mat-card> -->
+    </form>
+
+    <!----------------------------------Product  TABLE   STARTS------------------------------------------------------------>
+
+  
+  <table mat-table *ngIf="stock" [dataSource]="stock" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="productId">
+       <th mat-header-cell *matHeaderCellDef mat-sort-header>Product Id </th>
+       <td mat-cell *matCellDef="let element"> {{element.productId}} </td>
+     </ng-container>
+     <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+      <ng-container matColumnDef="unit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Unit </th>
+        <td mat-cell *matCellDef="let element"> {{element.unit}} </td>
+      </ng-container>
+    
+      
+  
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Manage </th>
+      <td mat-cell *matCellDef="let element">
+        <link rel="stylesheet"  type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  
+        <i  class="fa fa-edit" style="font-size: 16px; color:green"></i>
+        &nbsp;&nbsp;
+        <i class="fa fa-trash"   style="font-size: 16px; color:rgb(151, 70, 70)"></i>
+      
+      </td>
+    </ng-container>
+  
+     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+   </table>
+  <!----------------------------------TABLE   ENDS------------------------------------------------------------>
+
+
+
