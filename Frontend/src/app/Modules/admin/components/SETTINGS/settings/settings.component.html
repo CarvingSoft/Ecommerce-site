@@ -10,7 +10,7 @@
         </mat-grid-tile>
         
         <mat-grid-tile>
-          <button mat-fab class="btn btn-3" aria-label="Example icon button with a bookmark icon" >
+          <button mat-fab class="btn btn-3" aria-label="Example icon button with a bookmark icon" (click)="manageRole()">
             <span class="material-icons" style="font-size: 45px;">badge</span>
           </button>
           <div class="button_align">Role</div>
@@ -18,14 +18,14 @@
   
   
         <mat-grid-tile>
-          <button class="btn btn-7" mat-fab color="accent" aria-label="Example icon button with a bookmark icon" >
+          <button class="btn btn-7" mat-fab color="accent" aria-label="Example icon button with a bookmark icon" (click)="manageCategory()">
             <span class="material-icons" style="color: rgb(255, 255, 255); font-size: 45px;">maps_home_work</span>
           </button>
           <div class="button_align">Category</div>
         </mat-grid-tile>
   
         <mat-grid-tile>
-          <button class="btn btn-9" mat-fab color="accent" aria-label="Example icon button with a bookmark icon" >
+          <button class="btn btn-9" mat-fab color="accent" aria-label="Example icon button with a bookmark icon" (click)="manageBrand()">
             <span class="material-icons" style="color: rgb(255, 255, 255); font-size: 45px;">grade</span>
           </button>
           <div class="button_align">Brand</div>
@@ -45,9 +45,13 @@
       </mat-grid-list>
     
       <mat-grid-list gutterSize="10px" cols="5" rowHeight="1:1">
+        <mat-grid-tile>
+            <button  class="btn btn-7" mat-fab aria-label="Example icon button with a bookmark icon" (click)="manageStock()">
+              <span class="material-icons" style="font-size: 45px;">admin_panel_settings</span>
+            </button>
+            <div class="button_align">Stock</div>
+          </mat-grid-tile>
   
-  
-     
   
       </mat-grid-list>
     </div>

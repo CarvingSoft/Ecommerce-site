@@ -10,6 +10,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SettingsComponent } from './components/SETTINGS/settings/settings.component';
 import { ProductComponent } from './components/SETTINGS/product/product.component';
 import { UomComponent } from './components/SETTINGS/uom/uom.component';
+import { BrandComponent } from './components/SETTINGS/brand/brand.component';
+import { CategoryComponent } from './components/SETTINGS/category/category.component';
+import { RoleComponent } from './components/SETTINGS/role/role.component';
+import { StockComponent } from './components/SETTINGS/stock/stock.component';
+
 
 @NgModule({
   declarations: [
@@ -19,6 +24,10 @@ import { UomComponent } from './components/SETTINGS/uom/uom.component';
     SettingsComponent,
     ProductComponent,
     UomComponent,
+    BrandComponent,
+    CategoryComponent,
+    RoleComponent,
+    StockComponent,
 
   ],
   imports: [
