@@ -9,8 +9,8 @@ const Stock = require('../models/stock')
 async function syncModel(){
    Role.hasMany(User,{foreignKey:'roleId',onDelete:'CASCADE',onUpdate:'CASCADE'})
     User.belongsTo(Role)
-    Stock.hasMany(Product,{foreignKey:'stockId',onDelete:'CASCADE',onUpdate:"CASCADE"})
-    Product.belongsTo(Stock)
+    //Stock.hasMany(Product,{foreignKey:'stockId',onDelete:'CASCADE',onUpdate:"CASCADE"})
+    //Product.belongsTo(Stock)
     await sequelize.sync({
        alter:true
     })

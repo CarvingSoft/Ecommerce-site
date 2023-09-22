@@ -11,7 +11,7 @@ import { Product } from '../../../models/product';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent {
-  displayedColumns: string[] = [ 'name', 'action'];
+  displayedColumns: string[] = [ 'name', 'brandId', 'description', 'price', 'categoryId', 'stockId', 'action'];
   constructor(public dialog: MatDialog, private _snackbar: MatSnackBar,private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any, public adminService:AdminService){}
     ngOnInit(){
@@ -20,7 +20,11 @@ export class ProductComponent {
   productForm = this.fb.group({
 
     name: ['',Validators.required],
-    //remarks:['',Validators.required]
+    brandId: ['',Validators.required],
+    description: ['',Validators.required],
+    price: ['',Validators.required],
+    categoryId: ['',Validators.required],
+    stockId: ['',Validators.required]
   });
   products: Product []=[]
   getProduct(){
