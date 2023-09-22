@@ -9,6 +9,7 @@ import { DashboardComponent } from './components/HOME/dashboard/dashboard.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SettingsComponent } from './components/SETTINGS/settings/settings.component';
 import { ProductComponent } from './components/SETTINGS/product/product.component';
+import { UomComponent } from './components/SETTINGS/uom/uom.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ProductComponent } from './components/SETTINGS/product/product.componen
     DashboardComponent,
     SettingsComponent,
     ProductComponent,
+    UomComponent,
 
   ],
   imports: [

@@ -6,7 +6,7 @@ const router = express();
 router.post('/',async(req,res)=>{
   try {
       const {brandName} = req.body
-      const brand = new Brand({brandNameclae})
+      const brand = new Brand({brandName})
       await brand.save()
       res.send(brand)
   } catch (error) {

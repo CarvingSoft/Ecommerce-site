@@ -27,7 +27,8 @@ router.post('/',async(req,res)=>{
 
 router.get('/',async(req,res)=>{
     try {
-        const product = await Product.findAll({include : Stock})
+        const product = await Product.findAll({})
+        //const product = await Product.findAll({include : Stock})
         res.send(product)
     } catch (error) {
         res.send(error.message)
