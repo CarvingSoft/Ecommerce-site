@@ -17,6 +17,7 @@ import { StockComponent } from './components/SETTINGS/stock/stock.component';
 import { OrderComponent } from './components/SETTINGS/order/order.component';
 import { UserComponent } from './components/SETTINGS/user/user.component';
 import { AddressComponent } from './components/SETTINGS/address/address.component';
+import { PaymentComponent } from './components/SETTINGS/payment/payment.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { AddressComponent } from './components/SETTINGS/address/address.componen
     OrderComponent,
     UserComponent,
     AddressComponent,
+    PaymentComponent,
 
   ],
   imports: [

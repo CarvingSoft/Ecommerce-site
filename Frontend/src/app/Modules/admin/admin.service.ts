@@ -12,6 +12,7 @@ import { Stock } from './models/stock';
 import { Order } from './models/order';
 import { User } from './models/user';
 import { Address } from './models/address';
+import { Payment } from './models/payment';
 
 @Injectable({
   providedIn: 'root'
@@ -89,5 +90,11 @@ export class AdminService {
   }
   addAddress(data: any) {
     return this._http.post(this.url + '/address', data)
+  }
+  getPayment(): Observable<Payment[]> {
+    return this._http.get<Payment[]>(this.url + '/payment');
+  }
+  addPayment(data: any) {
+    return this._http.post(this.url + '/payment', data)
   }
 }
