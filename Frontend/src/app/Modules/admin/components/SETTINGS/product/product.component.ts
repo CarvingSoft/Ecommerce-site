@@ -6,6 +6,7 @@ import { AdminService } from '../../../admin.service';
 import { Product } from '../../../models/product';
 import { Observable } from 'rxjs';
 import { Brand } from '../../../models/brand';
+import { Category } from '../../../models/category';
 
 @Component({
   selector: 'app-product',
@@ -19,6 +20,7 @@ export class ProductComponent {
     ngOnInit(){
       this.getProduct()
       this.getBrand()
+      this.getCategory()
     }
   productForm = this.fb.group({
 
@@ -43,6 +45,13 @@ export class ProductComponent {
         this.brand$ = this.adminService.getBrand()
         console.log(this.brand$)
       }
+
+  category$! : Observable<Category[]>
+    getCategory(){
+      this.category$ = this.adminService.getCategory()
+      console.log(this.category$)
+      }
+
   onSubmit(){
     let data = {
       name: this.productForm.get('name')?.value,

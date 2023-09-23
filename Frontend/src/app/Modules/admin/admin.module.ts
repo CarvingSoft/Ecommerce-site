@@ -14,6 +14,9 @@ import { BrandComponent } from './components/SETTINGS/brand/brand.component';
 import { CategoryComponent } from './components/SETTINGS/category/category.component';
 import { RoleComponent } from './components/SETTINGS/role/role.component';
 import { StockComponent } from './components/SETTINGS/stock/stock.component';
+import { OrderComponent } from './components/SETTINGS/order/order.component';
+import { UserComponent } from './components/SETTINGS/user/user.component';
+import { AddressComponent } from './components/SETTINGS/address/address.component';
 
 
 @NgModule({
@@ -28,6 +31,9 @@ import { StockComponent } from './components/SETTINGS/stock/stock.component';
     CategoryComponent,
     RoleComponent,
     StockComponent,
+    OrderComponent,
+    UserComponent,
+    AddressComponent,
 
   ],
   imports: [
