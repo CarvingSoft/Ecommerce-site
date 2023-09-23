@@ -3,6 +3,7 @@ const router = express.Router();
 const Product = require('../models/product');
 const Stock = require('../models/stock');
 const Brand = require('../models/brand')
+const Category = require('../models/category')
 
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
@@ -43,7 +44,7 @@ router.post('/',async(req,res)=>{
 
 router.get('/',async(req,res)=>{
     try {
-        const product = await Product.findAll({include : [Brand]})
+        const product = await Product.findAll({include : [Brand,Category]})
         //const product = await Product.findAll({include : Stock})
         res.send(product)
     } catch (error) {

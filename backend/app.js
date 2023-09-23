@@ -10,6 +10,10 @@ const uom = require('./router/uom')
 const product = require('./router/product')
 const stock = require('./router/stock')
 const category = require('./router/category')
+const login = require('./router/login')
+const order = require('./router/order')
+const address = require('./router/address')
+
 const path = require('path');
  const multer = require('multer');
  const cloudinary = require('cloudinary').v2;
@@ -34,7 +38,9 @@ app.use('/uom',uom);
 app.use('/product',product);
 app.use('/stock',stock);
 app.use('/category',category);
-
+app.use('/login',login);
+app.use('/order',order);
+app.use('/address',address);
 
  
  app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

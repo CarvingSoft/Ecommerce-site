@@ -6,15 +6,22 @@ const Product = require('../models/product')
 const Stock = require('../models/stock')
 const Brand = require('../models/brand');
 const Category = require('../models/category');
+const Order = require('../models/order')
+const Address = require('../models/address')
 
 
 async function syncModel(){
-   Role.hasMany(User,{foreignKey:'roleId',onDelete:'CASCADE',onUpdate:'CASCADE'})
+    Role.hasMany(User,{foreignKey:'roleId',onDelete:'CASCADE',onUpdate:'CASCADE'})
     User.belongsTo(Role)
     //Stock.hasMany(Product,{foreignKey:'stockId',onDelete:'CASCADE',onUpdate:"CASCADE"})
     //Product.belongsTo(Stock)
     Brand.hasMany(Product,{foreignKey:'brandId',onDelete:'CASCADE',onUpdate:"CASCADE"})
     Product.belongsTo(Brand)
+    Category.hasMany(Product,{foreignKey:'categoryId',onDelete:'CASCADE',onUpdate:"CASCADE"})
+    Product.belongsTo(Category)
+    User.hasMany(Address,{foreignKey:'userId',onDelete:'CASCADE',onUpdate:'CASCADE'})
+    Address.belongsTo(User)
+    
     await sequelize.sync({
        alter:true
     })
@@ -61,10 +68,31 @@ const product = await Product.findAll({})
         ])
     }
 
-    const uom = await Uom.findAll({})
+const uom = await Uom.findAll({})
     if(uom.length === 0){
         Uom.bulkCreate([
            {uomName:'Kilogram',abbreviation:'KG'} 
+        ])
+    }
+
+const order = await Order.findAll({})
+    if(order.length === 0){
+        Order.bulkCreate([
+           {paymentId:1,orderStatus:'Shipped',shippedDate:'17-09-2023',deliveredDate:'18-09-2023'} 
+        ])
+    }
+const user = await User.findAll({})
+    if(user.length === 0){
+        User.bulkCreate([
+           {firstName:'Aswathy',lastName:'Sahadevan',mobile:'9495234987',email:'admin@gmail.com',password:'admin123',roleId:1}
+          
+        ])
+    }
+const address = await Address.findAll({})
+    if(address.length === 0){
+        Address.bulkCreate([
+           {userId:1,addressLine1:'Aswathy Nivas',addressLine2:'Yakkara',city:'Palakkad',state:'Kerala',zipcode:'678701',country:'India'}
+          
         ])
     }
    

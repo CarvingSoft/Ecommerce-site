@@ -1,23 +1,19 @@
 const express = require('express')
 const router = express.Router();
-const User = require('../models/user');
-const Role = require('../models/role');
+const Login = require('../models/login');
+
 
 router.post('/',async(req,res)=>{
     try {
         console.log(req.body)
-        const {firstName,lastName,mobile,email,password,roleId} = req.body;
-        const user = new User({
-            firstName: firstName,
-            lastName: lastName,
-            mobile: mobile,
+        const {email,password} = req.body;
+        const login = new Login({
             email: email,
-            password: password,
-            roleId: roleId
+            password: password
         })
-        await user.save();
-        console.log(user)
-        res.status(200).send(user)
+        await login.save();
+        console.log(login)
+        res.status(200).send(login)
     } catch (error) {
         res.send({
             error:error.message
@@ -27,8 +23,8 @@ router.post('/',async(req,res)=>{
 
 router.get('/',async(req,res)=>{
     try {
-        const user = await User.findAll({include:Role})
-        res.send(user);
+        const login = await Login.findAll({})
+        res.send(login);
     } catch (error) {
         res.send(error.message);
     }
@@ -37,8 +33,8 @@ router.get('/',async(req,res)=>{
 router.get('/:id', async(req,res)=>{
     try {
         
-        const user = await User.findOne ( {where : { id:req.params.id}})
-        res.send(user)   
+        const user = await Login.findOne ( {where : { id:req.params.id}})
+        res.send(login)   
         
     } catch (error) {
         res.send(error)
@@ -47,7 +43,7 @@ router.get('/:id', async(req,res)=>{
 
 router.patch('/:id', async(req,res)=>{
     try {
-        User.update(req.body, {
+        Login.update(req.body, {
             where: { id: req.params.id }
           })
             .then(num => {
@@ -72,7 +68,7 @@ router.patch('/:id', async(req,res)=>{
 router.delete('/:id', async(req,res)=>{
   try {
 
-      const result = await User.destroy({
+      const result = await Login.destroy({
           where: { id: req.params.id },
           force: true,
       });

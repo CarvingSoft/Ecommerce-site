@@ -1,4 +1,5 @@
 import { Brand } from "./brand";
+import { Category } from "./category";
 
 export interface Product{
     id:Number,
@@ -10,5 +11,6 @@ export interface Product{
     stockId:Number,
     cloudinary_id:String,
     file_url:String,
-    brand:Brand
+    brand:Brand,
+    category:Category
 }

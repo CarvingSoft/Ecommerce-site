@@ -9,6 +9,9 @@ import { Uom } from './models/uom';
 import { Category } from './models/category';
 import { Brand } from './models/brand';
 import { Stock } from './models/stock';
+import { Order } from './models/order';
+import { User } from './models/user';
+import { Address } from './models/address';
 
 @Injectable({
   providedIn: 'root'
@@ -68,5 +71,23 @@ export class AdminService {
       
       return throwError("Invalid file type");
     }
+  }
+  getOrder(): Observable<Order[]> {
+    return this._http.get<Order[]>(this.url + '/order');
+  }
+  addOrder(data: any) {
+    return this._http.post(this.url + '/order', data)
+  }
+  getUser(): Observable<User[]> {
+    return this._http.get<User[]>(this.url + '/user');
+  }
+  addUser(data: any) {
+    return this._http.post(this.url + '/user', data)
+  }
+  getAddress(): Observable<Address[]> {
+    return this._http.get<Address[]>(this.url + '/address');
+  }
+  addAddress(data: any) {
+    return this._http.post(this.url + '/address', data)
   }
 }
