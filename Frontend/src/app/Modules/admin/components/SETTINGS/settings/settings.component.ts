@@ -9,6 +9,7 @@ import { StockComponent } from '../stock/stock.component';
 import { OrderComponent } from '../order/order.component';
 import { UserComponent } from '../user/user.component';
 import { AddressComponent } from '../address/address.component';
+import { PaymentComponent } from '../payment/payment.component';
 
 
 @Component({
@@ -105,6 +106,16 @@ export class SettingsComponent {
   } 
   manageAddress(){
     const dialogRef = this.dialog.open(AddressComponent, {
+      height: '560px',
+      width: '900px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    })
+  }
+  managePayment(){
+    const dialogRef = this.dialog.open(PaymentComponent, {
       height: '560px',
       width: '900px',
     });

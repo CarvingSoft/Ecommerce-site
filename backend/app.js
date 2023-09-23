@@ -13,6 +13,7 @@ const category = require('./router/category')
 const login = require('./router/login')
 const order = require('./router/order')
 const address = require('./router/address')
+const payment = require('./router/payment')
 
 const path = require('path');
  const multer = require('multer');
@@ -41,6 +42,7 @@ app.use('/category',category);
 app.use('/login',login);
 app.use('/order',order);
 app.use('/address',address);
+app.use('/payment',payment);
 
  
  app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

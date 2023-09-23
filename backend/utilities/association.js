@@ -8,6 +8,7 @@ const Brand = require('../models/brand');
 const Category = require('../models/category');
 const Order = require('../models/order')
 const Address = require('../models/address')
+const Payment = require('../models/payment')
 
 
 async function syncModel(){
@@ -92,6 +93,13 @@ const address = await Address.findAll({})
     if(address.length === 0){
         Address.bulkCreate([
            {userId:1,addressLine1:'Aswathy Nivas',addressLine2:'Yakkara',city:'Palakkad',state:'Kerala',zipcode:'678701',country:'India'}
+          
+        ])
+    }
+const payment = await Payment.findAll({})
+    if(payment.length === 0){
+        Payment.bulkCreate([
+           {cartId:1,addressId:1,total:500,paymentMethod:'COD',date:'16-09-2023',status:'Order Placed'}
           
         ])
     }
