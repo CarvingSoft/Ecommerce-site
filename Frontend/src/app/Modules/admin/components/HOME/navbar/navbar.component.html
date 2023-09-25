@@ -21,6 +21,11 @@
         <a *ngIf="isExpanded">Dashboard</a>
       </mat-list-item>
 
+      <mat-list-item style="margin-left: 9px;" [routerLinkActive]="['active']" routerLink="productlist">
+        <span class="material-icons" style="color:pink; font-size: 25px; margin-right: 5px;">dashboard</span>
+        <a *ngIf="isExpanded">Product List</a>
+      </mat-list-item>
+
       <mat-list-item style="margin-left: 9px;" [routerLinkActive]="['active']" routerLink="user">
         <span class="material-icons" style="color: pink; font-size: 25px; margin-right: 5px;">group_add</span>
         <a *ngIf="isExpanded">User</a>

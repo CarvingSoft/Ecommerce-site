@@ -97,4 +97,7 @@ export class AdminService {
   addPayment(data: any) {
     return this._http.post(this.url + '/payment', data)
   }
+  getProductById(id: any):Observable<Product>{
+    return this._http.get<Product>(this.url + '/product' + '/' + id)
+  }
 }

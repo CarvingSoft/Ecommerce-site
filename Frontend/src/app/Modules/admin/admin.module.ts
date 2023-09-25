@@ -18,6 +18,8 @@ import { OrderComponent } from './components/SETTINGS/order/order.component';
 import { UserComponent } from './components/SETTINGS/user/user.component';
 import { AddressComponent } from './components/SETTINGS/address/address.component';
 import { PaymentComponent } from './components/SETTINGS/payment/payment.component';
+import { ProductlistComponent } from './components/productlist/productlist.component';
+import { ViewproductComponent } from './components/viewProduct/viewproduct.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { PaymentComponent } from './components/SETTINGS/payment/payment.componen
     UserComponent,
     AddressComponent,
     PaymentComponent,
+    ProductlistComponent,
+    ViewproductComponent,
 
   ],
   imports: [
