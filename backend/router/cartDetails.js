@@ -1,6 +1,7 @@
 const CartDetails = require ('../models/cartDetails')//couldnt get the path
 const express = require ('express');
 const router = express();
+//const router = express();
 
 router.post('/',async(req,res)=>{
     try{
