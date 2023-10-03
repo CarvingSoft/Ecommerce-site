@@ -2,10 +2,9 @@ const sequelize = require('../utilities/db')
 const {DataTypes,Seqelize} = require('sequelize')
 const Cart = sequelize.define('cart',{
 
-    userID: {type:DataTypes.INTEGER},
-    totalOfSubTotal: {type:DataTypes.INTEGER},
-    deliveryCharge: {type:DataTypes.INTEGER},
-    total: {type:DataTypes.INTEGER}
+    userId: {type:DataTypes.INTEGER},
+    productId: {type:DataTypes.INTEGER},
+    quantity: {type:DataTypes.INTEGER}
 },
 {
     freezeTableName:true
