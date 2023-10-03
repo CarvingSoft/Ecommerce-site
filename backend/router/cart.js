@@ -1,16 +1,16 @@
 const Cart = require ('../models/cart')
 const express = require ('express');
 const router = express();
+const Product = require('../models/product')
 
 router.post('/',async(req,res)=>{
     try{
-        const {userID,totalOfSubTotal,deliveryCharge,total} = req.body
+        const {userId,productId,quantity} = req.body
         const cart = new Cart({
            
-            userID:userID,
-            totalOfSubTotal: totalOfSubTotal,
-            deliveryCharge:deliveryCharge,
-            total:total 
+          userId:userId,
+          productId: productId,
+          quantity:quantity
     }
     )
 await cart.save()
@@ -24,7 +24,7 @@ catch(error){
 
 router.get('/', async(req,res)=>{
     try {
-        const cart = await Cart.findAll()
+        const cart = await Cart.findAll({include : Product})
         res.send(cart)
     } catch (error) {
         res.send(error.msg)

@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from '../../admin.service';
 import { Product } from '../../models/product';
 import { Router } from '@angular/router';
+import { CartDetails } from '../../models/cartDetails';
 
 @Component({
   selector: 'app-productlist',
@@ -30,4 +31,6 @@ export class ProductlistComponent {
      this.router.navigateByUrl('admin/viewProduct/'+id)
 
   }
+
 }
+ 

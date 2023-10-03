@@ -1,0 +1,35 @@
+<mat-sidenav-container autosize class="sidenav-container">
+    <mat-sidenav-content>
+      <mat-toolbar style="background-color:  rgb(18, 55, 85); color: white;" >
+  
+        <span>E-Mart</span>
+        <div class="nav_main">
+          <!-- <h1> Hi {{usernameNow}}</h1>
+  
+            <span class="material-icons">notifications</span>
+            <mat-icon class="nav_username" routerLink="settings">settings</mat-icon>-->
+            <span class="material-icons" (click) = "goToViewCart()">shopping_cart</span>&nbsp;&nbsp;
+            <mat-icon class="nav_username">power_settings_new</mat-icon>
+            
+  
+          </div>
+      </mat-toolbar>
+      <mat-toolbar style="background-color: rgb(152, 189, 219); color: white; height: 30px;">
+        <!-- <span>E-Mart</span> -->
+        <div class="nav_sub" >
+          <!-- <h1> Hi {{usernameNow}}</h1> -->
+          <span routerLink="viewAllProducts" class="menu-item">All Products</span> &nbsp;&nbsp;
+            <span routerLink="viewCategories" class="menu-item">Categories</span>
+            <!--<mat-icon class="nav_username" routerLink="settings">settings</mat-icon>
+            <mat-icon class="nav_username">power_settings_new</mat-icon> -->
+  
+          </div>
+      </mat-toolbar>
+  
+  
+     <div class="content-section">
+      <router-outlet></router-outlet>
+     </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

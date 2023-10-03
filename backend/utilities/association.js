@@ -9,6 +9,7 @@ const Category = require('../models/category');
 const Order = require('../models/order')
 const Address = require('../models/address')
 const Payment = require('../models/payment')
+const Cart = require('../models/cart')
 
 
 async function syncModel(){
@@ -22,6 +23,8 @@ async function syncModel(){
     Product.belongsTo(Category)
     User.hasMany(Address,{foreignKey:'userId',onDelete:'CASCADE',onUpdate:'CASCADE'})
     Address.belongsTo(User)
+    Product.hasMany(Cart,{foreignKey:'productId',onDelete:'CASCADE',onUpdate:"CASCADE"})
+    Cart.belongsTo(Product)
     
     await sequelize.sync({
        alter:true
