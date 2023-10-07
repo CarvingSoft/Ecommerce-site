@@ -1,0 +1,59 @@
+/* Style the form container */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+    // text-align: left;
+}
+
+/* Style the radio buttons and labels */
+.radio-group {
+    display: flex;
+    flex-direction: column; /* Display vertically */
+    align-items: baseline; /* Align to the left side */
+    margin-bottom: 10px; /* Add some spacing between the group and the submit button */
+    margin-left: 300px;
+}
+
+label {
+    display: inline-block;
+    font-weight: bold;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Style the submit button */
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .col {
+    flex: 1;
+    margin-left: 70px;
+  }
+
+  .actions-container {
+    display: flex;
+    justify-content: flex-end; /* This aligns the buttons to the right */
+  }

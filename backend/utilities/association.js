@@ -89,7 +89,7 @@ const order = await Order.findAll({})
 const user = await User.findAll({})
     if(user.length === 0){
         User.bulkCreate([
-           {firstName:'Aswathy',lastName:'Sahadevan',mobile:'9495234987',email:'admin@gmail.com',password:'admin123',roleId:1}
+           {firstName:'Aswathy',lastName:'Sahadevan',mobile:'9495234987',email:'aswathy@gmail.com',password:'aswathy123',roleId:2}
           
         ])
     }

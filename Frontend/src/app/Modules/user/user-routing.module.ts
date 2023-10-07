@@ -10,6 +10,8 @@ import { LoginComponent } from '../auth/components/login/login.component';
 import { PaymentComponent } from '../admin/components/SETTINGS/payment/payment.component';
 import { ViewBrandsComponent } from './components/view-brands/view-brands.component';
 import { OrderComponent } from '../admin/components/SETTINGS/order/order.component';
+import { PaymentmethodComponent } from './components/paymentmethod/paymentmethod.component';
+import { OrderSuccessComponent } from './components/order-success/order-success.component';
 
 const routes: Routes = [
   
@@ -24,7 +26,9 @@ children:[
   {path:'getAddressByUserId/:id',component:AddressComponent},
   {path:'payment',component:PaymentComponent},
   {path: 'viewBrands', component:ViewBrandsComponent},
-  {path:'order',component:OrderComponent}
+  {path:'order',component:OrderComponent},
+  {path:'paymentMethod',component:PaymentmethodComponent},
+  {path:'orderSuccess',component:OrderSuccessComponent}
 ]},
   
 ];

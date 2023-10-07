@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Methods</title>
+    <!-- <link rel="stylesheet" href="styles.css"> Link to your CSS file -->
+</head>
+<body>
+    <h2>Select a Payment Method:</h2>
+    
+    <form>
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="payment" value="COD">
+                Cash on Delivery
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="payment" value="debitcard">
+                Debit Card
+            </label>
+            <br>
+            <label>
+                <input type="radio" name="payment" value="creditcard">
+                Credit Card
+            </label>
+        </div>
+        <br><br>
+        <button mat-raised-button color="primary" type="submit" (click)="orderSuccess()">Submit</button>&nbsp;&nbsp;
+    </form>
+</body>
+</html>

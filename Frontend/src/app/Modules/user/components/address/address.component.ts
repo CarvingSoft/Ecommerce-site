@@ -83,7 +83,7 @@ export class AddressComponent {
   }
 
   managePayment(){
-    this.router.navigateByUrl('user/payment');
+    this.router.navigateByUrl('user/paymentMethod');
   }
 
   usernameNow!: string;
@@ -93,11 +93,11 @@ export class AddressComponent {
       let user = JSON.parse(token)
       console.log(user)
       let userid = user.userToken.id
-      // this.userService.getAddressByUserId(userid).subscribe((res)=>{
-      //   //let user = res.name.toLowerCase();
-      //   console.log(res)
-      //   //this.router.navigate([role]);
-      // })
+      this.userService.getAddressByUserId(userid).subscribe((res)=>{
+        //let user = res.name.toLowerCase();
+        console.log(res)
+        //this.router.navigate([role]);
+      })
 
     }
 

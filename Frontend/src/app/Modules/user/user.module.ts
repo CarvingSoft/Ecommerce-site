@@ -9,6 +9,8 @@ import { ViewAllProductsComponent } from './components/view-all-products/view-al
 import { ViewCartComponent } from './components/view-cart/view-cart.component';
 import { AddressComponent } from './components/address/address.component';
 import { ViewBrandsComponent } from './components/view-brands/view-brands.component';
+import { PaymentmethodComponent } from './components/paymentmethod/paymentmethod.component';
+import { OrderSuccessComponent } from './components/order-success/order-success.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { ViewBrandsComponent } from './components/view-brands/view-brands.compon
     ViewAllProductsComponent,
     ViewCartComponent,
     AddressComponent,
-    ViewBrandsComponent
+    ViewBrandsComponent,
+    PaymentmethodComponent,
+    OrderSuccessComponent
   ],
   imports: [
     CommonModule,
