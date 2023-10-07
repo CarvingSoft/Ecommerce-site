@@ -1,6 +1,6 @@
 <mat-toolbar style="color:bg-blue-900">
     <br>
-      <p style="color:#1f3a8a"> ADD Address</p>
+      <p style="color:#1f3a8a"> Add Shipping Address</p>
       <button mat-mini-fab color="primary" type="button" style="margin-left: auto;" aria-label="Example icon button with a home icon" class="d-block mr-0 ml-auto" (click)="onCancelClick()">
         <mat-icon>arrow_back</mat-icon>
       </button>
@@ -9,23 +9,9 @@
     <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
         <mat-card class="background">
           <mat-card-content >
-      
-            <div class="row">
-              <div class="col">
-                <mat-form-field appearance="fill" class="full-width-category">
-                  <mat-label>Name</mat-label>
-                  <mat-select formControlName="userId">
-                    <mat-option *ngFor="let item of user$  | async" [value]="item.id">
-                      {{item.firstName}}
-                    </mat-option> 
-                  </mat-select>
-                  <mat-error *ngIf="addressForm.controls['userId'].hasError('required')">
-                    Name is<strong>required</strong>
-                  </mat-error>
-                </mat-form-field></div>
              
             
-  
+              <div class="row">
             
               <div class="col">
                 <mat-form-field class="full-width">
@@ -45,9 +31,6 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-            </div>
-  
-            <div class="row">
               <div class="col">
                 <mat-form-field class="full-width">
                   <input matInput placeholder="city" formControlName="city">
@@ -56,6 +39,11 @@
                   </mat-error>
                 </mat-form-field>
               </div>
+              
+            </div>
+  
+            <div class="row">
+            
               <div class="col">
                 <mat-form-field class="full-width">
                   <input matInput placeholder="state" formControlName="state">
@@ -75,9 +63,7 @@
                   </mat-error>
                 </mat-form-field>
               </div>
-            </div>
-            
-              <div class="row">
+          
               <div class="col">
                 <mat-form-field class="full-width">
                   <input matInput placeholder="country" formControlName="country">
@@ -110,10 +96,41 @@
         </mat-card>
       </form>
 
-    <!----------------------------------Product  TABLE   STARTS------------------------------------------------------------>
 
+      <div class="address-list">
+        <h2>Select an Address</h2>
+      
+        <div *ngFor="let address of address">
+          <label>
+            <input type="radio" name="addresses" [(ngModel)]="selectedAddress" [value]="getRadioValue(address)">
+            {{ address.addressLine1 }}, {{ address.addressLine2 }}, {{ address.city }}, {{ address.state }}, {{ address.zipcode }}, {{ address.country }}
+          </label>
+        </div>
+        
+        <p>Selected Address: {{ selectedAddress | json }}</p>
+
+
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit" (click)="managePayment()">Proceed to Payment</button>&nbsp;&nbsp;
+        </mat-card-actions>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <!----------------------------------Product  TABLE   STARTS------------------------------------------------------------>
+
+    
   
-  <table mat-table *ngIf="address" [dataSource]="address" matSort class="mat-elevation-z8">
+  <!-- <table mat-table *ngIf="address" [dataSource]="address" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="userId">
        <th mat-header-cell *matHeaderCellDef mat-sort-header>User</th>
        <td mat-cell *matCellDef="let element"> {{element.user.firstName}} </td>
@@ -158,7 +175,7 @@
   
      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-   </table>
+   </table> -->
   <!----------------------------------TABLE   ENDS------------------------------------------------------------>
 
 

@@ -7,13 +7,14 @@ import { DashboardComponent } from './components/HOME/dashboard/dashboard.compon
 import { SettingsComponent } from './components/SETTINGS/settings/settings.component';
 import { ProductlistComponent } from './components/productlist/productlist.component';
 import { ViewproductComponent } from './components/viewProduct/viewproduct.component';
+import { OrderComponent } from './components/SETTINGS/order/order.component';
 
 
 
 
 
 const routes: Routes = [
-
+  
   {path: '', component:NavbarComponent,
   children:[
   {path: 'home', component: DashboardComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
    {path: 'user', component: UserManageComponent},
     {path: 'settings', component: SettingsComponent},
     {path: 'productlist',component:ProductlistComponent},
-    {path: 'viewProduct/:id',component:ViewproductComponent}
+    {path: 'viewProduct/:id',component:ViewproductComponent},
+    {path: 'order/:id',component:OrderComponent}
 
   ]
  }

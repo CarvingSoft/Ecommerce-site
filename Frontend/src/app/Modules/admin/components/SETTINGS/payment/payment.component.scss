@@ -1,0 +1,14 @@
+.row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .col {
+    flex: 1;
+    margin-left: 70px;
+  }
+
+  .actions-container {
+    display: flex;
+    justify-content: flex-end; /* This aligns the buttons to the right */
+  }

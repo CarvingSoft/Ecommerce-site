@@ -4,31 +4,30 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/Modules/admin/admin.service';
-import { Category } from 'src/app/Modules/admin/models/category';
-import { Product } from 'src/app/Modules/admin/models/product';
+import { Brand } from 'src/app/Modules/admin/models/brand';
 
 @Component({
-  selector: 'app-view-categories',
-  templateUrl: './view-categories.component.html',
-  styleUrls: ['./view-categories.component.scss']
+  selector: 'app-view-brands',
+  templateUrl: './view-brands.component.html',
+  styleUrls: ['./view-brands.component.scss']
 })
-export class ViewCategoriesComponent {
+export class ViewBrandsComponent {
   constructor(public dialog: MatDialog, private _snackbar: MatSnackBar,private fb: FormBuilder,public router: Router,
     // @Inject(MAT_DIALOG_DATA) public data: any, 
     public adminService:AdminService){}
      ngOnInit(){
-       this.getCategory()
+       this.getBrand()
      }
-    category: Category []=[]
-   getCategory(){
-     this.adminService.getCategory().subscribe((res)=>{
-       this.category = res;
-       console.log(this.category);
+    brand: Brand []=[]
+   getBrand(){
+     this.adminService.getBrand().subscribe((res)=>{
+       this.brand = res;
+       console.log(this.brand);
      })
    }
-   viewCategory(id:Number){
+   viewBrand(id:Number){
       console.log(id)
-      this.router.navigateByUrl('admin/viewCategory/'+id)
+      this.router.navigateByUrl('admin/viewBrand/'+id)
  
    }
 }

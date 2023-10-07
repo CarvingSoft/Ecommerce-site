@@ -1,10 +1,10 @@
 <mat-toolbar style="color:bg-blue-900">
-    <br>
-      <p style="color:#1f3a8a"> ADD Order</p>
-      <button mat-mini-fab color="primary" type="button" style="margin-left: auto;" aria-label="Example icon button with a home icon" class="d-block mr-0 ml-auto" (click)="onCancelClick()">
-        <mat-icon>arrow_back</mat-icon>
-      </button>
-    </mat-toolbar>
+  <br>
+    <p style="color:#1f3a8a"> ADD Order</p>
+    <button mat-mini-fab color="primary" type="button" style="margin-left: auto;" aria-label="Example icon button with a home icon" class="d-block mr-0 ml-auto" (click)="onCancelClick()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </mat-toolbar>
     
     <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
       <mat-card class="background">
@@ -13,15 +13,47 @@
           <div class="row">
             <div class="col">
               <mat-form-field class="full-width">
-                <input matInput placeholder="paymentId" formControlName="paymentId">
-                <mat-error *ngIf="orderForm.controls['paymentId'].hasError('required')">
-                    paymentId <strong>required</strong>
+                <input matInput placeholder="userId" formControlName="userId">
+                <mat-error *ngIf="orderForm.controls['userId'].hasError('required')">
+                  userId <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="cartId" formControlName="cartId">
+                <mat-error *ngIf="orderForm.controls['cartId'].hasError('required')">
+                  cartId <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="orderDate" formControlName="orderDate">
+                <mat-error *ngIf="orderForm.controls['orderDate'].hasError('required')">
+                  orderDate <strong>required</strong>
                 </mat-error>
               </mat-form-field>
             </div>
             </div>
 
             <div class="row">
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="deliveryCharge" formControlName="deliveryCharge">
+                    <mat-error *ngIf="orderForm.controls['deliveryCharge'].hasError('required')">
+                      deliveryCharge <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="total" formControlName="total">
+                    <mat-error *ngIf="orderForm.controls['total'].hasError('required')">
+                      total <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
                 <div class="col">
                   <mat-form-field class="full-width">
                     <input matInput placeholder="orderStatus" formControlName="orderStatus">
@@ -35,9 +67,25 @@
             <div class="row">
             <div class="col">
               <mat-form-field class="full-width">
+                <input matInput placeholder="packedDate" formControlName="packedDate">
+                <mat-error *ngIf="orderForm.controls['packedDate'].hasError('required')">
+                  packedDate <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
                 <input matInput placeholder="shippedDate" formControlName="shippedDate">
                 <mat-error *ngIf="orderForm.controls['shippedDate'].hasError('required')">
                     shippedDate <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="deliveredDate" formControlName="deliveredDate">
+                <mat-error *ngIf="orderForm.controls['deliveredDate'].hasError('required')">
+                  deliveredDate <strong>required</strong>
                 </mat-error>
               </mat-form-field>
             </div>
@@ -46,9 +94,9 @@
             <div class="row">
                 <div class="col">
                   <mat-form-field class="full-width">
-                    <input matInput placeholder="deliveredDate" formControlName="deliveredDate">
-                    <mat-error *ngIf="orderForm.controls['deliveredDate'].hasError('required')">
-                        deliveredDate <strong>required</strong>
+                    <input matInput placeholder="soldDate" formControlName="soldDate">
+                    <mat-error *ngIf="orderForm.controls['soldDate'].hasError('required')">
+                      soldDate <strong>required</strong>
                     </mat-error>
                   </mat-form-field>
                 </div>
@@ -81,21 +129,45 @@
 
   
   <table mat-table *ngIf="order" [dataSource]="order" matSort class="mat-elevation-z8">
-    <ng-container matColumnDef="paymentId">
-       <th mat-header-cell *matHeaderCellDef mat-sort-header>Payment Id </th>
-       <td mat-cell *matCellDef="let element"> {{element.paymentId}} </td>
+    <ng-container matColumnDef="userId">
+       <th mat-header-cell *matHeaderCellDef mat-sort-header>User Id </th>
+       <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
      </ng-container>
+     <ng-container matColumnDef="cartId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>CartId </th>
+      <td mat-cell *matCellDef="let element"> {{element.cartId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="orderDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Order Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.orderDate}} </td>
+    </ng-container>
+    <ng-container matColumnDef="deliveryCharge">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Delivery Charge </th>
+      <td mat-cell *matCellDef="let element"> {{element.deliveryCharge}} </td>
+    </ng-container>
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Total </th>
+      <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+    </ng-container>
      <ng-container matColumnDef="orderStatus">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Order Status</th>
         <td mat-cell *matCellDef="let element"> {{element.orderStatus}} </td>
+      </ng-container>
+      <ng-container matColumnDef="packedDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Packed Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.packedDate}} </td>
       </ng-container>
       <ng-container matColumnDef="shippedDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Shipped Date</th>
         <td mat-cell *matCellDef="let element"> {{element.shippedDate}} </td>
       </ng-container>
       <ng-container matColumnDef="deliveredDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>deliveredDate</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Delivered Date</th>
         <td mat-cell *matCellDef="let element"> {{element.deliveredDate}} </td>
+      </ng-container>
+      <ng-container matColumnDef="soldDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sold Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.soldDate}} </td>
       </ng-container>
     
       

@@ -12,7 +12,7 @@ import { Order } from '../../../models/order';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent {
-  displayedColumns: string[] = [ 'paymentId','orderStatus','shippedDate','deliveredDate', 'action'];
+  displayedColumns: string[] = [ 'userId','cartId','orderDate','deliveryCharge','total','orderStatus','packedDate','shippedDate','deliveredDate','soldDate','action'];
   constructor(public dialog: MatDialog, private _snackbar: MatSnackBar,private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any, public adminService:AdminService){}
     ngOnInit(){
@@ -20,10 +20,16 @@ export class OrderComponent {
     }
   orderForm = this.fb.group({
 
-    paymentId: ['',Validators.required],
+    userId: ['',Validators.required],
+    cartId: ['',Validators.required],
+    orderDate: ['',Validators.required],
+    deliveryCharge: ['',Validators.required],
+    total: ['',Validators.required],
     orderStatus: ['',Validators.required],
+    packedDate: ['',Validators.required],
     shippedDate: ['',Validators.required],
-    deliveredDate: ['',Validators.required]
+    deliveredDate: ['',Validators.required],
+    soldDate: ['',Validators.required]
     
   });
   order: Order []=[]

@@ -37,6 +37,17 @@ router.get('/',async(req,res)=>{
     }
 })
 
+router.get('getAddressByUserId/:id', async(req,res)=>{
+  try {
+      
+      const address = await Address.findOne ( {where : { id:req.params.userId}})
+      res.send(address)   
+      
+  } catch (error) {
+      res.send(error)
+  }
+})
+
 router.get('/:id', async(req,res)=>{
     try {
         

@@ -6,12 +6,18 @@ const Order = require('../models/order');
 router.post('/',async(req,res)=>{
     try {
         console.log(req.body)
-        const {paymentId,orderStatus,shippedDate,deliveredDate} = req.body
+        const {userId,cartId,orderDate,deliveryCharge,total,orderStatus,packedDate,shippedDate,deliveredDate,soldDate} = req.body
         const order = new Order({
-            paymentId: paymentId,
+            userId: userId,
+            cartId: cartId,
+            orderDate: orderDate,
+            deliveryCharge:deliveryCharge,
+            total:total,
             orderStatus: orderStatus,
+            packedDate:packedDate,
             shippedDate: shippedDate,
-            deliveredDate: deliveredDate
+            deliveredDate: deliveredDate,
+            soldDate:soldDate
         })
         await order.save();
         console.log(order)

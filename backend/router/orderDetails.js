@@ -1,23 +1,26 @@
-const CartDetails = require ('../models/cartDetails')//couldnt get the path
+const OrderDetails = require ('../models/orderDetails')
 const express = require ('express');
 const router = express();
-//const router = express();
+const Product = require('../models/product')
 
 router.post('/',async(req,res)=>{
     try{
-        const {productId,quantity,unit,subTotal} = req.body
-        const cartDetails = new CartDetails({
+        const {productId,quantity,unit} = req.body
+
+        const product = await Product.findOne({ _id: productId });
+        const subTotal = quantity*product.price
+
+        const orderDetails = new OrderDetails({
            
             productId: productId,
             quantity: quantity,
             unit: unit ,
-            subTotal:subTotal
-            
+            subTotal:subTotal 
     }
     )
-await cartDetails.save()
+await orderDetails.save()
 
-res.send(cartDetails)
+res.send(orderDetails)
 }
 catch(error){
     console.log(error)  
@@ -26,8 +29,8 @@ catch(error){
 
 router.get('/', async(req,res)=>{
     try {
-        const cartDetails = await CartDetails.findAll()
-        res.send(cartDetails)
+        const orderDetails = await OrderDetails.findAll({include : Product})
+        res.send(orderDetails)
     } catch (error) {
         res.send(error.msg)
     }
@@ -36,8 +39,8 @@ router.get('/', async(req,res)=>{
 router.get('/:id', async(req,res)=>{
     try {
         
-        const cartDetails = await CartDetails.findOne ( {where : { id:req.params.id}})
-        res.send(cartDetails)   
+        const orderDetails = await OrderDetails.findOne ( {where : { id:req.params.id}})
+        res.send(orderDetails)   
         
     } catch (error) {
         res.send(error)
@@ -46,7 +49,7 @@ router.get('/:id', async(req,res)=>{
 
 router.patch('/:id', async(req,res)=>{
     try {
-        CartDetails.update(req.body, {
+      OrderDetails.update(req.body, {
             where: { id: req.params.id }
           })
             .then(num => {
@@ -71,7 +74,7 @@ router.patch('/:id', async(req,res)=>{
 router.delete('/:id', async(req,res)=>{
     try {
 
-        const result = await CartDetails.destroy({
+        const result = await OrderDetails.destroy({
             where: { id: req.params.id },
             force: true,
         });

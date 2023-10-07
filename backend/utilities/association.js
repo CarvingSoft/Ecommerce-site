@@ -9,7 +9,8 @@ const Category = require('../models/category');
 const Order = require('../models/order')
 const Address = require('../models/address')
 const Payment = require('../models/payment')
-const Cart = require('../models/cart')
+const Cart = require('../models/cart');
+const OrderDetails = require('../models/orderDetails');
 
 
 async function syncModel(){
@@ -25,6 +26,8 @@ async function syncModel(){
     Address.belongsTo(User)
     Product.hasMany(Cart,{foreignKey:'productId',onDelete:'CASCADE',onUpdate:"CASCADE"})
     Cart.belongsTo(Product)
+    Product.hasMany(OrderDetails,{foreignKey:'productId',onDelete:'CASCADE',onUpdate:"CASCADE"})
+    OrderDetails.belongsTo(Product)
     
     await sequelize.sync({
        alter:true
@@ -35,9 +38,7 @@ const role = await Role.findAll({})
     if(role.length === 0){
         Role.bulkCreate([
            {roleName:'Admin'},
-           {roleName:'Sales'},
-           {roleName:'HR'},
-           {roleName:'Tech support'}
+           {roleName:'User'}
           
         ])
     }
@@ -52,7 +53,7 @@ const brand = await Brand.findAll({})
 const category = await Category.findAll({})
     if(category.length === 0){
         Category.bulkCreate([
-           {categoryName:'Cleaning items'}
+           {categoryName:'Cleaning Items'}
           
         ])
     }
@@ -68,7 +69,7 @@ const category = await Category.findAll({})
 const product = await Product.findAll({})
     if(product.length === 0){
         Product.bulkCreate([
-           {name:'Detergent',brandId:1,description:'first grade',price:100,categoryId:1} 
+           {name:'Detergent',brandId:1,description:'first grade',price:100,categoryId:1,cloudinary_id: 'wxg9txhkd6wbov0z7cuy',file_url: 'http://res.cloudinary.com/dbfjzroig/image/upload/v1696611943/wxg9txhkd6wbov0z7cuy.jpg'} 
         ])
     }
 
@@ -82,7 +83,7 @@ const uom = await Uom.findAll({})
 const order = await Order.findAll({})
     if(order.length === 0){
         Order.bulkCreate([
-           {paymentId:1,orderStatus:'Shipped',shippedDate:'17-09-2023',deliveredDate:'18-09-2023'} 
+           {userId:2,cartId:1,orderDate:'16-09-2023',deliveryCharge:0,total:700,orderStatus:'Shipped',packedDate:'17-09-2023',shippedDate:'17-09-2023',deliveredDate:'18-09-2023',soldDate:'03-10-2023'} 
         ])
     }
 const user = await User.findAll({})
@@ -92,17 +93,17 @@ const user = await User.findAll({})
           
         ])
     }
-const address = await Address.findAll({})
-    if(address.length === 0){
-        Address.bulkCreate([
-           {userId:1,addressLine1:'Aswathy Nivas',addressLine2:'Yakkara',city:'Palakkad',state:'Kerala',zipcode:'678701',country:'India'}
+// const address = await Address.findAll({})
+//     if(address.length === 0){
+//         Address.bulkCreate([
+//            {userId:1,addressLine1:'Aswathy Nivas',addressLine2:'Yakkara',city:'Palakkad',state:'Kerala',zipcode:'678701',country:'India'}
           
-        ])
-    }
+//         ])
+//     }
 const payment = await Payment.findAll({})
     if(payment.length === 0){
         Payment.bulkCreate([
-           {cartId:1,addressId:1,total:500,paymentMethod:'COD',date:'16-09-2023',status:'Order Placed'}
+           {orderId:1,addressId:1,total:500,paymentMethod:'COD'}
           
         ])
     }

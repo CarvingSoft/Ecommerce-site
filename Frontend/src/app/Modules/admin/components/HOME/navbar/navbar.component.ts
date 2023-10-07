@@ -32,10 +32,10 @@ export class NavbarComponent {
       const token: any = localStorage.getItem('token')
       let user = JSON.parse(token)
       console.log(user)
-  this.usernameNow  = user.name
+  this.usernameNow  = user.userToken.name
       console.log(this.usernameNow)
       // this._http.setCurrentUser(user)
-      let roleid = user.role
+      let roleid = user.userToken.roleId
       this.adminService.getRoleById(roleid).subscribe((res)=>{
         let role = res.roleName.toLowerCase();
         this.router.navigate([role]);

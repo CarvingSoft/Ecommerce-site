@@ -1,0 +1,46 @@
+.row {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .col {
+    flex: 1;
+    margin-left: 70px;
+  }
+
+  .actions-container {
+    display: flex;
+    justify-content: flex-end; /* This aligns the buttons to the right */
+  }
+
+/* Style the container for the address list */
+.address-list {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style the header */
+.address-list h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* Style each address item */
+.address-list label {
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+/* Style the default radio button */
+.address-list input[type="radio"] {
+  margin-right: 5px; /* Add some spacing between the radio button and label */
+}
+
+/* Style the selected address display */
+.address-list p {
+  font-size: 15px;
+  margin-top: 20px;
+}
