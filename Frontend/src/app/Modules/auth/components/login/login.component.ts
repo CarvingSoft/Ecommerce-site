@@ -21,19 +21,19 @@ export class LoginComponent {
 
   token : any
   submit(){
-    let {email,password}=this.loginForm.getRawValue()
-    if(email=="admin@gmail.com"&&password=="123456"){
-      this.router.navigate(['/admin']);
-      return
-    }
-    // this.authService.login(this.loginForm.getRawValue()).subscribe((res)=>{
-    //   this.token = res
-    //   // localStorage.setItem('token', this.token.token)
-    //   if(this.token){
-    //     this.setCurrentUser()
-    //   }
-    // })
-    //alert("Email or password is in correct")
+    // let {email,password}=this.loginForm.getRawValue()
+    // if(email=="admin@gmail.com"&&password=="123456"){
+    //   this.router.navigate(['/admin']);
+    //   return
+    // }
+    this.authService.login(this.loginForm.getRawValue()).subscribe((res)=>{
+      this.token = res
+      // localStorage.setItem('token', this.token.token)
+      if(this.token){
+        this.setCurrentUser()
+      }
+    })
+    //alert("Email or password is incorrect")
   }
 
   setCurrentUser(){
@@ -41,17 +41,21 @@ export class LoginComponent {
       const token: any = localStorage.getItem('token')
       let user = JSON.parse(token)
       console.log(user)
-      // this._http.setCurrentUser(user)
-      let roleid = user.role
+      // this.adminService.setCurrentUser(user)
+      let roleid = user.userToken.roleId
+      console.log(roleid)
       this.adminService.getRoleById(roleid).subscribe((res)=>{
+        console.log(res)
         let role = res.roleName.toLowerCase();
-        this.router.navigate([role]);
+        this.router.navigate([role, 'addressForm']);
+        //this.router.navigate([role]);
       })
-
-    }
+      //this.router.navigateByUrl('user/addressForm');
+    } 
   }
 
   ngOnInit(): void {
+    this.setCurrentUser()
   }
 
 

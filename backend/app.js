@@ -5,7 +5,7 @@ const user = require('./router/user')
 const role = require('./router/role')
 const  brand = require('./router/brand')
 const cart = require('./router/cart')
-const cartDetails =require('./router/cartDetails')
+const orderDetails =require('./router/orderDetails')
 const uom = require('./router/uom')
 const product = require('./router/product')
 const stock = require('./router/stock')
@@ -34,7 +34,7 @@ app.use('/user',user);
 app.use('/role',role)
 app.use('/brand',brand)
 app.use('/cart',cart)
-app.use('/cartdetails',cartDetails)
+app.use('/orderDetails',orderDetails)
 app.use('/uom',uom);
 app.use('/product',product);
 app.use('/stock',stock);

@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { AdminService } from '../../../admin.service';
 import { Payment } from '../../../models/payment';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -14,20 +15,18 @@ import { Payment } from '../../../models/payment';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent {
-  displayedColumns: string[] = ['cartId', 'addressId', 'total', 'paymentMethod', 'date', 'status', 'action'];
+  displayedColumns: string[] = ['orderId', 'addressId', 'total', 'paymentMethod', 'action'];
   constructor(public dialog: MatDialog, private _snackbar: MatSnackBar,private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any, public adminService:AdminService){}
+    public adminService:AdminService, private activatedRoute:ActivatedRoute){}
     ngOnInit(){
       this.getPayment()
     }
   paymentForm = this.fb.group({
 
-    cartId: ['',Validators.required],
-    addressId: ['',Validators.required],
-    total: ['',Validators.required],
-    paymentMethod: ['',Validators.required],
-    date: ['',Validators.required],
-    status: ['',Validators.required]
+    orderId: ['',[Validators.required]],
+    addressId: ['',[Validators.required]],
+    total: ['',[Validators.required]],
+    paymentMethod: ['',[Validators.required]]
     
   });
   payment: Payment []=[]
@@ -40,7 +39,13 @@ export class PaymentComponent {
   
   onSubmit(){
     console.log(this.paymentForm.getRawValue())
-    this.adminService.addPayment(this.paymentForm.getRawValue()).subscribe((res)=>{
+    let data = {
+      orderId : this.paymentForm.get("orderId")?.value,
+      addressId : this.paymentForm.get("addressId")?.value,
+      total : this.paymentForm.get("total")?.value,
+      paymentMethod : this.paymentForm.get("paymentMethod")?.value }
+
+      this.adminService.addPayment(data).subscribe((res)=>{
       console.log(res)
        this._snackbar.open("Payment added successfully...","" ,{duration:3000})
       this.clearControls()
@@ -49,6 +54,14 @@ export class PaymentComponent {
       console.log(error)
       alert(error)
     }))
+    // const id = this.activatedRoute.snapshot.paramMap.get('id')
+    // this.adminService.updateOrder(id).subscribe((res)=>{
+    //   console.log(res)
+
+    // },(error=>{
+    //   console.log(error)
+    //   alert(error)
+    // }))
   }
   clearControls(){
     this.getPayment()

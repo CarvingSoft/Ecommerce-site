@@ -15,11 +15,12 @@ export class RegisterComponent {
   constructor(private fb:FormBuilder, private router:Router, private authService: AuthService) { }
 
   registerForm = this.fb.group({
-    name: [''],
-    phoneNumber: [''],
+    firstName: [''],
+    lastName: [''],
+    mobile: [''],
+    email: [''],
     password: [''],
-    roleId: [''],
-    status: [false]
+    roleId: ['']
   })
 
   //color: ThemePalette = 'accent';
@@ -32,8 +33,21 @@ export class RegisterComponent {
   }
 
   submit(){
-    this.authService.registerUser(this.registerForm.getRawValue()).subscribe((res)=>{})
+    let data = {
+      firstName : this.registerForm.get("firstName")?.value,
+      lastName: this.registerForm.get("lastName")?.value,
+    mobile: this.registerForm.get("mobile")?.value,
+    email: this.registerForm.get("email")?.value,
+    password: this.registerForm.get("password")?.value,
+    roleId: 2
+    }
+    this.authService.registerUser(data).subscribe((res)=>{
+     console.log(res)
+    })
+    this.router.navigateByUrl('user/login');
+    //this.router.navigateByUrl('user/addressForm');
   }
+  
 
   ngOnInit(): void {
     this.getRole()

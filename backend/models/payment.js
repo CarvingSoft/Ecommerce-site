@@ -3,28 +3,20 @@ const {DataTypes} = require ('sequelize')
 const sequelize = require('../utilities/db')
 
 const Payment = sequelize.define('payment',{
-    cartId: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+    orderId: {
+        type: DataTypes.INTEGER
+        //allowNull: false
    },
    addressId: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.INTEGER
         //allowNull: false
    },
    total: {
-    type: DataTypes.INTEGER
+    type: DataTypes.DECIMAL
    },
    paymentMethod: {
     type: DataTypes.STRING
-   },
-   date: {
-    type: DataTypes.STRING,
-    //allowNull: false
-   },
-   status: {
-    type: DataTypes.STRING,
-    //allowNull: false
-  }
+   }
 },
 {
     freezeTableName: true

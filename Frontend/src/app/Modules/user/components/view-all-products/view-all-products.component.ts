@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/Modules/admin/admin.service';
 import { Product } from 'src/app/Modules/admin/models/product';
+import { UserService } from '../../user.service';
+import { Cart } from '../../models/cart';
 
 @Component({
   selector: 'app-view-all-products',
@@ -14,7 +16,7 @@ import { Product } from 'src/app/Modules/admin/models/product';
 export class ViewAllProductsComponent {
   constructor(public dialog: MatDialog, private _snackbar: MatSnackBar,private fb: FormBuilder,public router: Router,
     // @Inject(MAT_DIALOG_DATA) public data: any, 
-    public adminService:AdminService){}
+    public adminService:AdminService, public userService:UserService){}
      ngOnInit(){
        this.getProduct()
      }
@@ -30,8 +32,21 @@ export class ViewAllProductsComponent {
       this.router.navigateByUrl('admin/viewProduct/'+id)
  
    }
+
    addToCart(id:Number){
     console.log(id)
-    // this.router.navigateByUrl('user/addToCart/'+id)
+    let data = {
+      productId : id,
+      quantity : 1,
+      userId : 1
+    }
+    console.log(data)
+    this.userService.addCart(data).subscribe((res)=>{
+    console.log(res)
+     this._snackbar.open("Product added to cart successfully...","" ,{duration:3000})
+    },(error=>{
+      console.log(error)
+      alert(error)
+    }))
    }
 }

@@ -72,11 +72,11 @@ export class AuthService {
     }
 
     registerUser(data : any){
-      return this._http.post(this.url + '/register', data)
+      return this._http.post(this.url + '/user', data)
     }
 
     getUser():Observable<User[]>{
-      return this._http.get<User[]>(this.url + '/register')
+      return this._http.get<User[]>(this.url + '/user')
     }
 
 }

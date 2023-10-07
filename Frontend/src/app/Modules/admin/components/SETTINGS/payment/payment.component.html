@@ -1,77 +1,78 @@
 <mat-toolbar style="color:bg-blue-900">
     <br>
-      <p style="color:#1f3a8a"> ADD Payment</p>
+      <p style="color:#1f3a8a"> Choose Payment Method</p>
       <button mat-mini-fab color="primary" type="button" style="margin-left: auto;" aria-label="Example icon button with a home icon" class="d-block mr-0 ml-auto" (click)="onCancelClick()">
         <mat-icon>arrow_back</mat-icon>
       </button>
     </mat-toolbar>
     
     <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
-        <mat-card class="background">
-          <mat-card-content >
-      
-            <div class="row">
-                <div class="col">
-                    <mat-form-field class="full-width">
-                      <input matInput placeholder="cartId" formControlName="cartId">
-                      <mat-error *ngIf="paymentForm.controls['cartId'].hasError('required')">
-                        cartId <strong>required</strong>
-                      </mat-error>
-                    </mat-form-field>
-                  </div>
-             
-        
-              <div class="col">
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="addressId" formControlName="addressId">
-                  <mat-error *ngIf="paymentForm.controls['addressId'].hasError('required')">
-                    addressId <strong>required</strong>
-                  </mat-error>
-                </mat-form-field>
-              </div>
+      <mat-card class="background">
+        <mat-card-content >
+           
           
-  
-              <div class="col">
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="total" formControlName="total">
-                  <mat-error *ngIf="paymentForm.controls['total'].hasError('required')">
-                    total <strong>required</strong>
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            </div>
-  
             <div class="row">
-              <div class="col">
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="paymentMethod" formControlName="paymentMethod">
-                  <mat-error *ngIf="paymentForm.controls['paymentMethod'].hasError('required')">
-                    paymentMethod <strong>required</strong>
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            
-  
-            
-              <div class="col">
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="date" formControlName="date">
-                  <mat-error *ngIf="paymentForm.controls['date'].hasError('required')">
-                    date <strong>required</strong>
-                  </mat-error>
-                </mat-form-field>
-              </div>
-            
-             
-              <div class="col">
-                <mat-form-field class="full-width">
-                  <input matInput placeholder="status" formControlName="status">
-                  <mat-error *ngIf="paymentForm.controls['status'].hasError('required')">
-                    status <strong>required</strong>
-                  </mat-error>
-                </mat-form-field>
-              </div>
+          
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="orderId" formControlName="orderId">
+                <mat-error *ngIf="paymentForm.controls['orderId'].hasError('required')">
+                  orderId <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
             </div>
+        
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="addressId" formControlName="addressId">
+                <mat-error *ngIf="paymentForm.controls['addressId'].hasError('required')">
+                  addressId <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="total" formControlName="total">
+                <mat-error *ngIf="paymentForm.controls['total'].hasError('required')">
+                  total <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            
+          </div>
+
+          <div class="row">
+          
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="paymentMethod" formControlName="paymentMethod">
+                <mat-error *ngIf="paymentForm.controls['paymentMethod'].hasError('required')">
+                  paymentMethod <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          
+
+          
+            <!-- <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="date" formControlName="date">
+                <mat-error *ngIf="paymentForm.controls['date'].hasError('required')">
+                  date <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+        
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="status" formControlName="status">
+                <mat-error *ngIf="paymentForm.controls['status'].hasError('required')">
+                  status <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div> -->
+          </div>
     
     
             <!-- <div class="row">
@@ -84,7 +85,7 @@
           </div> -->
        
           <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">ADD</button>&nbsp;&nbsp;
+            <button mat-raised-button color="primary" type="submit">Proceed to Pay</button>&nbsp;&nbsp;
             <!-- <button *ngIf="isEdit" color="primary"   mat-raised-button type="button" [disabled]="!paymentForm.valid" (click)="edit()">UPDATE</button>&nbsp;&nbsp; -->
             <!-- <button mat-mini-fab color="primary" aria-label="Example icon button with a home icon" (click)="onCancelClick()">
               <mat-icon>arrow_back</mat-icon>
@@ -98,7 +99,7 @@
     <!----------------------------------Product  TABLE   STARTS------------------------------------------------------------>
 
   
-  <table mat-table *ngIf="payment" [dataSource]="payment" matSort class="mat-elevation-z8">
+  <!-- <table mat-table *ngIf="payment" [dataSource]="payment" matSort class="mat-elevation-z8">
     <ng-container matColumnDef="cartId">
        <th mat-header-cell *matHeaderCellDef mat-sort-header>Cart Id</th>
        <td mat-cell *matCellDef="let element"> {{element.cartId}} </td>
@@ -143,7 +144,7 @@
   
      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-   </table>
+   </table> -->
   <!----------------------------------TABLE   ENDS------------------------------------------------------------>
 
 

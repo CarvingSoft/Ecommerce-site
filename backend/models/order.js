@@ -3,11 +3,27 @@ const {DataTypes} = require ('sequelize')
 const sequelize = require('../utilities/db')
 
 const Order = sequelize.define('order',{
-   paymentId: {
+   userId: {
+    type: DataTypes.INTEGER,
+        //allowNull: false
+   },
+   cartId: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        //allowNull: false
+   },
+   orderDate: {
+    type: DataTypes.STRING
+   },
+   deliveryCharge: {
+    type: DataTypes.INTEGER
+   },
+   total: {
+    type: DataTypes.INTEGER
    },
    orderStatus: {
+    type: DataTypes.STRING
+   },
+   packedDate: {
     type: DataTypes.STRING
    },
    shippedDate: {
@@ -16,6 +32,9 @@ const Order = sequelize.define('order',{
    deliveredDate: {
     type: DataTypes.STRING,
     //allowNull: false
+   },
+   soldDate: {
+    type: DataTypes.STRING
    }
 },
 {

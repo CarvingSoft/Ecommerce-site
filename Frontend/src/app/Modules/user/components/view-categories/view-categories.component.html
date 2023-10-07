@@ -1,1 +1,11 @@
-<p>view-categories works!</p>
+<div class="category-grid">
+    <div class="category-card" *ngFor="let category of category">
+    <!-- <img  src="{{ product.file_url }}" style="width: 50px; height: 50px;" /> -->
+      <h3>{{ category.categoryName }}</h3>
+      <!-- <p>Price: ${{ product.price }}</p>
+      <button mat-raised-button color="primary" type="button" (click)="viewProduct(product.id)">VIEW</button>&nbsp;&nbsp;
+      <button mat-raised-button color="primary" type="button">ADD TO CART</button>&nbsp;&nbsp; -->
+
+    </div>
+  </div>
+

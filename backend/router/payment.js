@@ -8,14 +8,12 @@ const Payment = require('../models/payment')
 router.post('/',async(req,res)=>{
     try {
         console.log(req.body)
-        const {cartId,addressId,total,paymentMethod,date,status} = req.body
+        const {orderId,addressId,total,paymentMethod} = req.body
         const payment = new Payment({
-            cartId: cartId,
+          orderId: orderId,
             addressId: addressId,
             total: total,
-            paymentMethod: paymentMethod,
-            date: date,
-            status: status
+            paymentMethod: paymentMethod
         })
         await payment.save();
         console.log(payment)

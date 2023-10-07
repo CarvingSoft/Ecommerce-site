@@ -1,9 +1,7 @@
 export interface Payment{
     id:Number,
-    cartId:Number
+    orderId:Number,
     addressId:Number,
     total:Number,
-    paymentMethod:String,
-    date:String,
-    status:String
+    paymentMethod:String
 }

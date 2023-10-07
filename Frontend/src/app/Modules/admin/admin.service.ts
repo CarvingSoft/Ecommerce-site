@@ -24,7 +24,7 @@ export class AdminService {
   constructor(private _http:HttpClient) { }
 
 
-  getRoleById(id: string): Observable<Role>{
+  getRoleById(id: number): Observable<Role>{
     return this._http.get<Role>(this.url +'/role/'+id);
   }
   addProduct(data: any) {
@@ -99,5 +99,10 @@ export class AdminService {
   }
   getProductById(id: any):Observable<Product>{
     return this._http.get<Product>(this.url + '/product' + '/' + id)
+  }
+
+  updateOrder(id: any) {
+    const body = { orderStatus : "Order Placed" };
+    return this._http.patch(this.url + '/order'+ '/' + id, body);
   }
 }
