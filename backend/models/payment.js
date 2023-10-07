@@ -12,7 +12,7 @@ const Payment = sequelize.define('payment',{
         //allowNull: false
    },
    total: {
-    type: DataTypes.DECIMAL
+    type: DataTypes.INTEGER
    },
    paymentMethod: {
     type: DataTypes.STRING
