@@ -35,22 +35,22 @@ export class UserService {
       return this._http.get<Address>(this.url +'/address/getAddressByUserId/'+id);
     }
     
-    updateOrder(total: Number){
-      //console.log('Total value:', total);
-      const body = { 
-        orderDate: new Date(),
-        total: total,
-        orderStatus: "Order Initiated" };
-        console.log(body)
-      this._http.post(this.url + '/order', body).subscribe(
-        (response) => {
-          console.log('Response from server:', response);
-        },
-        (error) => {
-          console.error('Error from server:', error);
-        }
-      );
-    }
+    // updateOrder(total: Number){
+    //   //console.log('Total value:', total);
+    //   const body = { 
+    //     orderDate: new Date(),
+    //     total: total,
+    //     orderStatus: "Order Initiated" };
+    //     console.log(body)
+    //   this._http.post(this.url + '/order', body).subscribe(
+    //     (response) => {
+    //       console.log('Response from server:', response);
+    //     },
+    //     (error) => {
+    //       console.error('Error from server:', error);
+    //     }
+    //   );
+    // }
 
   // getRoleById(id: string): Observable<Role>{
   //   return this._http.get<Role>(this.url +'/role/'+id);
