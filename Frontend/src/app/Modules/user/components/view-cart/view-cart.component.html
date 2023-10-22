@@ -11,7 +11,7 @@
     <div class="cart-item-details">
       <div class="cart-item-title">{{ element.product.name }}</div>
       <div class="cart-item-description">{{ element.product.description }}</div>
-      <div class="cart-item-price">{{ element.product.price}}</div>
+      <div class="cart-item-price">{{ (+element.product.price * +element.quantity)}}</div>
       <div class="cart-item-quantity">
         Quantity:
         <button mat-icon-button (click)="decrementQuantity(element)" class="small-button">
