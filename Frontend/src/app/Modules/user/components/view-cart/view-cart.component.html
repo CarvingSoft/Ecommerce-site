@@ -2,17 +2,28 @@
   <div class="cart-item" *ngFor="let element of cartList">
     <div class="cart-item-image">
       <ng-container *ngIf="element.product.file_url; else alternativeImage">
-        <img src="{{ element.product.file_url }}" alt="{{ element.product.name }}" />
+        <img src="{{ element.product.file_url }}" alt="{{ element.product.name }}" style="width: 50px; height: 50px;"/>
       </ng-container>
       <ng-template #alternativeImage>
-        <img src="../../../../../../assets/img/no_image.jpeg" alt="Alternative Image" />
+        <img src="../../../../../../assets/img/no_image.jpeg" alt="Alternative Image" style="width: 50px; height: 50px;" />
       </ng-template>
     </div>
     <div class="cart-item-details">
       <div class="cart-item-title">{{ element.product.name }}</div>
       <div class="cart-item-description">{{ element.product.description }}</div>
       <div class="cart-item-price">{{ element.product.price}}</div>
-      <div class="cart-item-quantity">Quantity: {{ element.quantity }}</div>
+      <div class="cart-item-quantity">
+        Quantity:
+        <button mat-icon-button (click)="decrementQuantity(element)" class="small-button">
+          <mat-icon class="small-icon">remove_circle</mat-icon>
+        </button>
+        <span class="quantity-label">{{ element.quantity }}</span>
+        <button mat-icon-button (click)="incrementQuantity(element)" class="small-button">
+          <mat-icon class="small-icon">add_circle</mat-icon>
+        </button>
+      </div>
+
+      <!-- <div class="cart-item-quantity">Quantity: {{ element.quantity }}</div> -->
     </div>
     <div class="cart-item-actions">
       <i class="fa fa-edit" style="font-size: 16px; color: green"></i>

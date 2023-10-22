@@ -18,6 +18,8 @@ export class AddressComponent {
   displayedColumns: string[] = [ 'userId', 'addressLine1', 'addressLine2', 'city', 'state', 'zipcode', 'country', 'action'];
   constructor(public dialog: MatDialog, private _snackbar: MatSnackBar,private fb: FormBuilder,
      public adminService:AdminService, public userService:UserService, private router:Router){}
+
+    userAddress: Address | null = null;
     ngOnInit(){
       this.setCurrentUser()
       this.getUser()
@@ -94,6 +96,7 @@ export class AddressComponent {
       console.log(user)
       let userid = user.userToken.id
       this.userService.getAddressByUserId(userid).subscribe((res)=>{
+        this.userAddress = res;
         //let user = res.name.toLowerCase();
         console.log(res)
         //this.router.navigate([role]);

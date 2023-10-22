@@ -1,8 +1,13 @@
 <div class="product-grid">
     <div class="product-card" *ngFor="let product of products">
-        <img  src="{{ product.file_url }}" style="width: 50px; height: 50px;" />
+        <ng-container *ngIf="product.file_url; else alternativeImage">
+          <img  src="{{ product.file_url }}" style="width: 50px; height: 50px;" />
+        </ng-container>
+        <ng-template #alternativeImage>
+          <img src="../../../../../../assets/img/no_image.jpeg" alt="Alternative Image" style="width: 50px; height: 50px;"/>
+        </ng-template>
       <h3>{{ product.name }}</h3>
-      <p>Price: ${{ product.price }}</p>
+      <p>Price: {{ product.price }} </p>
       <button mat-raised-button color="primary" type="button" (click)="viewProduct(product.id)">VIEW</button>&nbsp;&nbsp;
       <button mat-raised-button color="primary" type="button" (click)="addToCart(product.id)">ADD TO CART</button>&nbsp;&nbsp;
 

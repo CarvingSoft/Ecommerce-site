@@ -21,6 +21,19 @@ export class UserService {
       return this._http.post(this.url + '/cart', data)
     }
 
+    updateCart(cartItem: Cart): Observable<any> {
+      // Assuming you are making a PUT request to update the cart item.
+      const url = `${this.url}/cart/${cartItem.id}`;
+      
+      // You can customize the data you want to send to the server to update the cart item.
+      const updatedCartItemData = {
+          quantity: cartItem.quantity, // Update the quantity
+          // Other properties to update
+      };
+
+      return this._http.patch(url, updatedCartItemData);
+  }
+
     getAddress(): Observable<Address[]> {
       return this._http.get<Address[]>(this.url + '/address');
     }

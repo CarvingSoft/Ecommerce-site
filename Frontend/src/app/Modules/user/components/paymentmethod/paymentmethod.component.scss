@@ -7,7 +7,7 @@ body {
 
 h2 {
     color: #333;
-    // text-align: left;
+    text-align: left;
 }
 
 /* Style the radio buttons and labels */
@@ -16,7 +16,6 @@ h2 {
     flex-direction: column; /* Display vertically */
     align-items: baseline; /* Align to the left side */
     margin-bottom: 10px; /* Add some spacing between the group and the submit button */
-    margin-left: 300px;
 }
 
 label {
@@ -37,6 +36,7 @@ input[type="submit"] {
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
+    align-items: left;
 }
 
 input[type="submit"]:hover {
@@ -57,3 +57,11 @@ input[type="submit"]:hover {
     display: flex;
     justify-content: flex-end; /* This aligns the buttons to the right */
   }
+
+  /* Custom CSS class for aligning elements to the left */
+.custom-card-actions {
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    align-items: center; /* Vertically center items (optional) */
+}
+

@@ -15,11 +15,13 @@ import { AuthService } from 'src/app/Modules/auth/auth.service';
 })
 export class ViewCartComponent {
   orderTotal!: number;
+  //private cart: Cart = this.getCartFromLocalStorage()
 
   constructor(private userService:UserService, public dialog: MatDialog, private router:Router ,private authService:AuthService){}
   
   displayedColumns: string[] = [ 'productId','description','price','file_url','quantity', 'action'];
   ngOnInit(){
+    this.cartList = this.getCartFromLocalStorage();
     this.viewCart()
   }
   parsePrice(priceString: string): number {
@@ -46,6 +48,59 @@ export class ViewCartComponent {
       this.cartList = res;
       console.log(this.cartList);
     })
+  }
+
+  private setCartToLocalStorage(): void {
+    const cartData = {
+      items: this.cartList, // Your cart items
+      price: this.calculateTotal(), // Calculate the total price
+      quantity: this.calculateTotalQuantity() // Calculate the total quantity
+    };
+    const cartJson = JSON.stringify(cartData);
+    localStorage.setItem('Cart', cartJson);
+  }
+
+  private getCartFromLocalStorage(): Cart [] {
+    const cartJson = localStorage.getItem('Cart');
+    return cartJson ? JSON.parse(cartJson) : [];
+  }
+
+  incrementQuantity(cartItem: Cart): void {
+    // Increase the quantity of the selected cart item
+    cartItem.quantity++;
+    this.setCartToLocalStorage();
+    this.userService.updateCart(cartItem).subscribe(
+      (res) => {
+      console.log(res);
+        //this._snackbar.open("Cart updated successfully...", "", { duration: 3000 });
+    },
+  (error) => {
+              console.log(error);
+              alert(error);
+          }
+  );
+  }
+
+  decrementQuantity(cartItem: Cart): void {
+    // Decrease the quantity of the selected cart item, but ensure it doesn't go below 1
+    if (cartItem.quantity > 1) {
+      cartItem.quantity--;
+      this.setCartToLocalStorage();
+      this.userService.updateCart(cartItem).subscribe(
+        (res) => {
+        console.log(res);
+          //this._snackbar.open("Cart updated successfully...", "", { duration: 3000 });
+      },
+    (error) => {
+                console.log(error);
+                alert(error);
+            }
+    );
+    }
+  }
+
+  calculateTotalQuantity(): number {
+    return this.cartList.reduce((prevSum, currentItem) => prevSum + (currentItem.quantity || 0), 0);
   }
 
   manageShippingAddress(){

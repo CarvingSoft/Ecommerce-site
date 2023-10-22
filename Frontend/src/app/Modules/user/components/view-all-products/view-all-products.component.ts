@@ -19,6 +19,7 @@ export class ViewAllProductsComponent {
     public adminService:AdminService, public userService:UserService){}
      ngOnInit(){
        this.getProduct()
+       this.getCart()
      }
    products: Product []=[]
    getProduct(){
@@ -33,6 +34,14 @@ export class ViewAllProductsComponent {
  
    }
 
+   cart: Cart []=[]
+
+   getCart(){
+    this.userService.getCart().subscribe((res)=>{
+      this.cart = res;
+      console.log(this.cart);
+    })
+  }
    addToCart(id:Number){
     console.log(id)
     let data = {
@@ -40,13 +49,34 @@ export class ViewAllProductsComponent {
       quantity : 1,
       userId : 1
     }
-    console.log(data)
-    this.userService.addCart(data).subscribe((res)=>{
-    console.log(res)
-     this._snackbar.open("Product added to cart successfully...","" ,{duration:3000})
-    },(error=>{
-      console.log(error)
-      alert(error)
-    }))
+    let cartItem = this.cart.find(cart => cart.productId === data.productId);
+
+    if (cartItem) {
+      console.log("Match found:", cartItem);
+      cartItem.quantity += data.quantity;
+            //cartItem.price = /* calculate the new price based on your logic */;
+      this.userService.updateCart(cartItem).subscribe(
+          (res) => {
+          console.log(res);
+            this._snackbar.open("Cart updated successfully...", "", { duration: 3000 });
+        },
+      (error) => {
+                  console.log(error);
+                  alert(error);
+              }
+      );
+          }   
+    else {
+      console.log("No match found");
+      this.userService.addCart(data).subscribe((res)=>{
+        console.log(res)
+         this._snackbar.open("Product added to cart successfully...","" ,{duration:3000})
+        },(error=>{
+          console.log(error)
+          alert(error)
+      }))
+  }
+  
+    
    }
 }

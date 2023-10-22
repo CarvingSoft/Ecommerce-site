@@ -65,3 +65,22 @@
     color: red;
   }
   
+  .cart-item-quantity {
+    display: flex; /* Use flexbox to align items in a row */
+    align-items: center; /* Align items vertically in the center */
+  }
+  
+  .small-button {
+    font-size: 24px; /* Adjust the font size to make the icons larger (can be adjusted to your preferred size) */
+    color: blue; /* Change the color to blue or any other color you prefer */
+  }
+  
+  .small-icon {
+    font-size: 24px; /* Adjust the font size to make the icons larger (must match the font size in .small-button) */
+    color: blue; /* Change the color to blue or any other color you prefer */
+  }
+  
+  .quantity-label {
+    margin: 0 5px; /* Add spacing between the icons and the quantity label if needed */
+    font-size: 18px;
+  }
