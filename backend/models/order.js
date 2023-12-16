@@ -31,6 +31,9 @@ const Order = sequelize.define('order',{
    orderStatus: {
     type: DataTypes.STRING
    },
+   paymentStatus: {
+    type: DataTypes.STRING
+   },
    packedDate: {
     type: DataTypes.STRING
    },
