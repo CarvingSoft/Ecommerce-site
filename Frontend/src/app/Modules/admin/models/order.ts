@@ -1,6 +1,8 @@
 export interface Order{
     id:Number,
     userId:Number,
+    addressId:Number,
+    paymentMethod:string,
     cartId:Number,
     orderDate:string,
     deliveryCharge:Number,
