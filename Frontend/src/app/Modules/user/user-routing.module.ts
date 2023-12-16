@@ -12,6 +12,7 @@ import { ViewBrandsComponent } from './components/view-brands/view-brands.compon
 import { OrderComponent } from '../admin/components/SETTINGS/order/order.component';
 import { PaymentmethodComponent } from './components/paymentmethod/paymentmethod.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
+import { ViewproductComponent } from '../admin/components/viewProduct/viewproduct.component';
 
 const routes: Routes = [
   
@@ -28,7 +29,8 @@ children:[
   {path: 'viewBrands', component:ViewBrandsComponent},
   {path:'order',component:OrderComponent},
   {path:'paymentMethod',component:PaymentmethodComponent},
-  {path:'orderSuccess',component:OrderSuccessComponent}
+  {path:'orderSuccess',component:OrderSuccessComponent},
+  {path:'viewproduct/:id',component:ViewproductComponent}
 ]},
   
 ];

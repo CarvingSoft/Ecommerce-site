@@ -23,7 +23,7 @@ export class AddressComponent {
     ngOnInit(){
       this.setCurrentUser()
       this.getUser()
-      this.userService.getAddress()
+      this.getAddress()
       
     }
   addressForm = this.fb.group({
@@ -57,8 +57,13 @@ export class AddressComponent {
       }
   onSubmit(){
     console.log(this.addressForm.getRawValue())
+    if(localStorage.getItem('token')){
+      const token: any = localStorage.getItem('token')
+      let user = JSON.parse(token)
+      console.log(user)
+      let userid = user.userToken.id
     let data = {
-      userId : this.addressForm.get("userId")?.value,
+      userId : userid,
       addressLine1 : this.addressForm.get("addressLine1")?.value,
       addressLine2 : this.addressForm.get("addressLine2")?.value,
       city: this.addressForm.get("city")?.value,
@@ -75,9 +80,9 @@ export class AddressComponent {
       console.log(error)
       alert(error)
     }))
-  }
+  }}
   clearControls(){
-    this.userService.getAddress()
+    this.getAddress()
   }
 
   onCancelClick(){

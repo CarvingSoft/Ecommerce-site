@@ -1,10 +1,10 @@
 export interface Address{
     id:Number,
     userId:Number
-    addressLine1:String,
-    addressLine2:String,
-    city:String,
-    state:String,
-    zipcode:String,
-    country:String
+    addressLine1:string,
+    addressLine2:string,
+    city:string,
+    state:string,
+    zipcode:string,
+    country:string
 }

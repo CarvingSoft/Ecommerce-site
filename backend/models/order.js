@@ -11,6 +11,14 @@ const Order = sequelize.define('order',{
         type: DataTypes.INTEGER,
         //allowNull: false
    },
+   addressId: {
+    type: DataTypes.INTEGER,
+    //allowNull: false
+    },
+    paymentMethod: {
+    type: DataTypes.STRING,
+    //allowNull: false
+    },
    orderDate: {
     type: DataTypes.STRING
    },

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, map, shareReplay } from 'rxjs';
 import { AuthService } from '../../../../auth/auth.service';
 import { AdminService } from '../../../admin.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -27,21 +28,21 @@ export class NavbarComponent {
   constructor(private breakpointObserver: BreakpointObserver,public authService : AuthService,public adminService :AdminService,private router:Router) {}
 
   usernameNow!: string;
-  setCurrentUser(){
-    if(localStorage.getItem('token')){
-      const token: any = localStorage.getItem('token')
-      let user = JSON.parse(token)
-      console.log(user)
-  this.usernameNow  = user.userToken.name
-      console.log(this.usernameNow)
-      // this._http.setCurrentUser(user)
-      let roleid = user.userToken.roleId
-      this.adminService.getRoleById(roleid).subscribe((res)=>{
+  setCurrentUser() {
+    if (localStorage.getItem('token')) {
+      const token: any = localStorage.getItem('token');
+      console.log(token);
+      let user = JSON.parse(token);
+  
+      this.usernameNow = user.userToken.name;
+  
+      let roleid = user.userToken.roleId;
+  
+      this.adminService.getRoleById(roleid).subscribe((res) => {
         let role = res.roleName.toLowerCase();
         this.router.navigate([role]);
-      })
-
+        console.log(this.usernameNow);
+        })
     }
-
-}
+  }
 }

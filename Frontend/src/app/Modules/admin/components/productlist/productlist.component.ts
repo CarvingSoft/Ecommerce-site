@@ -28,7 +28,7 @@ export class ProductlistComponent {
   }
   viewProduct(id:Number){
      console.log(id)
-     this.router.navigateByUrl('admin/viewProduct/'+id)
+     this.router.navigateByUrl('admin/viewproduct/'+id)
 
   }
 
