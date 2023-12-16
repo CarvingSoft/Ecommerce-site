@@ -78,6 +78,14 @@
                     </mat-error>
                   </mat-form-field>
                 </div>
+                <div class="col">
+                  <mat-form-field class="full-width">
+                    <input matInput placeholder="paymentStatus" formControlName="paymentStatus">
+                    <mat-error *ngIf="orderForm.controls['paymentStatus'].hasError('required')">
+                      paymentStatus <strong>required</strong>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
                 </div>
 
             <div class="row">

@@ -8,6 +8,7 @@ export interface Order{
     deliveryCharge:Number,
     total:Number,
     orderStatus:string,
+    paymentStatus:string,
     packedDate:string,
     shippedDate:string,
     deliveredDate:string,
