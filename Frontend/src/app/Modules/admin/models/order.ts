@@ -1,13 +1,15 @@
 export interface Order{
     id:Number,
     userId:Number,
+    addressId:Number,
+    paymentMethod:string,
     cartId:Number,
-    orderDate:String,
+    orderDate:string,
     deliveryCharge:Number,
     total:Number,
-    orderStatus:String,
-    packedDate:String,
-    shippedDate:String,
-    deliveredDate:String,
-    soldDate:String
+    orderStatus:string,
+    packedDate:string,
+    shippedDate:string,
+    deliveredDate:string,
+    soldDate:string
 }

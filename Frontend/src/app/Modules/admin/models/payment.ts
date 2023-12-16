@@ -3,5 +3,5 @@ export interface Payment{
     orderId:Number,
     addressId:Number,
     total:Number,
-    paymentMethod:String
+    paymentMethod:string
 }

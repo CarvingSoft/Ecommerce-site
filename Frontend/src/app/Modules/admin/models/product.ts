@@ -3,14 +3,14 @@ import { Category } from "./category";
 
 export interface Product{
     id:Number,
-    name:String,
+    name:string,
     brandId:Number,
-    description:String,
+    description:string,
     price:Number,
     categoryId:Number,
     stockId:Number,
-    cloudinary_id:String,
-    file_url:String,
+    cloudinary_id:string,
+    file_url:string,
     brand:Brand,
     category:Category
 }

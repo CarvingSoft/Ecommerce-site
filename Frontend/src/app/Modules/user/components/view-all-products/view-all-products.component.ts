@@ -30,8 +30,8 @@ export class ViewAllProductsComponent {
    }
    viewProduct(id:Number){
       console.log(id)
-      this.router.navigateByUrl('admin/viewProduct/'+id)
- 
+      this.router.navigateByUrl('user/viewproduct/'+id)
+      console.log('hi')
    }
 
    cart: Cart []=[]

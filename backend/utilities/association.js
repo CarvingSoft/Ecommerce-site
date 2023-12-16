@@ -83,7 +83,7 @@ const uom = await Uom.findAll({})
 const order = await Order.findAll({})
     if(order.length === 0){
         Order.bulkCreate([
-           {userId:2,cartId:1,orderDate:'16-09-2023',deliveryCharge:0,total:700,orderStatus:'Shipped',packedDate:'17-09-2023',shippedDate:'17-09-2023',deliveredDate:'18-09-2023',soldDate:'03-10-2023'} 
+           {userId:2,cartId:1,addressId:1,paymentMethod:'COD',orderDate:'16-09-2023',deliveryCharge:0,total:700,orderStatus:'Shipped',packedDate:'17-09-2023',shippedDate:'17-09-2023',deliveredDate:'18-09-2023',soldDate:'03-10-2023'} 
         ])
     }
 const user = await User.findAll({})

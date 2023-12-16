@@ -12,7 +12,7 @@ import { Order } from '../../../models/order';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent {
-  displayedColumns: string[] = [ 'userId','cartId','orderDate','deliveryCharge','total','orderStatus','packedDate','shippedDate','deliveredDate','soldDate','action'];
+  displayedColumns: string[] = [ 'userId','cartId','addressId','paymentMethod','orderDate','deliveryCharge','total','orderStatus','packedDate','shippedDate','deliveredDate','soldDate','action'];
   constructor(public dialog: MatDialog, private _snackbar: MatSnackBar,private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any, public adminService:AdminService){}
     ngOnInit(){
@@ -22,6 +22,8 @@ export class OrderComponent {
 
     userId: ['',Validators.required],
     cartId: ['',Validators.required],
+    addressId: ['',Validators.required],
+    paymentMethod: ['',Validators.required],
     orderDate: ['',Validators.required],
     deliveryCharge: ['',Validators.required],
     total: ['',Validators.required],

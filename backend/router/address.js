@@ -37,10 +37,10 @@ router.get('/',async(req,res)=>{
     }
 })
 
-router.get('getAddressByUserId/:id', async(req,res)=>{
+router.get('/getAddressByUserId/:id', async(req,res)=>{
   try {
       
-      const address = await Address.findOne ( {where : { id:req.params.userId}})
+      const address = await Address.findAll ( {where : { userId:req.params.id}})
       res.send(address)   
       
   } catch (error) {

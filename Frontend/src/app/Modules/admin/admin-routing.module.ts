@@ -22,9 +22,8 @@ const routes: Routes = [
    {path: 'user', component: UserManageComponent},
     {path: 'settings', component: SettingsComponent},
     {path: 'productlist',component:ProductlistComponent},
-    {path: 'viewProduct/:id',component:ViewproductComponent},
-    {path: 'order/:id',component:OrderComponent}
-
+    {path: 'viewproduct/:id',component:ViewproductComponent},
+    {path: 'order/:id',component:OrderComponent},
   ]
  }
 

@@ -29,6 +29,22 @@
             </div>
             <div class="col">
               <mat-form-field class="full-width">
+                <input matInput placeholder="addressId" formControlName="addressId">
+                <mat-error *ngIf="orderForm.controls['addressId'].hasError('required')">
+                  addressId <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="paymentMethod" formControlName="paymentMethod">
+                <mat-error *ngIf="orderForm.controls['paymentMethod'].hasError('required')">
+                  paymentMethod <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
                 <input matInput placeholder="orderDate" formControlName="orderDate">
                 <mat-error *ngIf="orderForm.controls['orderDate'].hasError('required')">
                   orderDate <strong>required</strong>
