@@ -11,6 +11,7 @@ import { AddressComponent } from './components/address/address.component';
 import { ViewBrandsComponent } from './components/view-brands/view-brands.component';
 import { PaymentmethodComponent } from './components/paymentmethod/paymentmethod.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { OrderSuccessComponent } from './components/order-success/order-success.
     AddressComponent,
     ViewBrandsComponent,
     PaymentmethodComponent,
-    OrderSuccessComponent
+    OrderSuccessComponent,
+    HomepageComponent
   ],
   imports: [
     CommonModule,

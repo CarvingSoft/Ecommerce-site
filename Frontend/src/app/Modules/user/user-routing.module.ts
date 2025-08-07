@@ -13,11 +13,14 @@ import { OrderComponent } from '../admin/components/SETTINGS/order/order.compone
 import { PaymentmethodComponent } from './components/paymentmethod/paymentmethod.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { ViewproductComponent } from '../admin/components/viewProduct/viewproduct.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 const routes: Routes = [
   
   {path: '', component:UserNavbarComponent,
 children:[
+  {path: '', component: HomepageComponent}, // Default route to homepage
+  {path: 'home', component: HomepageComponent},
   {path: 'viewCategories', component:ViewCategoriesComponent},
   {path: 'viewAllProducts', component:ViewAllProductsComponent},
   {path: 'viewCart', component:ViewCartComponent},

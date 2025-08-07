@@ -21,6 +21,11 @@ export class UserService {
       return this._http.post(this.url + '/cart', data)
     }
 
+    addToCart(productId: number): Observable<any> {
+      const data = { productId: productId, quantity: 1 };
+      return this._http.post(this.url + '/cart', data);
+    }
+
     updateCart(cartItem: Cart): Observable<any> {
       // Assuming you are making a PUT request to update the cart item.
       const url = `${this.url}/cart/${cartItem.id}`;
@@ -46,6 +51,29 @@ export class UserService {
 
     getAddressByUserId(id: number): Observable<Address>{
       return this._http.get<Address>(this.url +'/address/getAddressByUserId/'+id);
+    }
+
+    // Product methods
+    getProducts(): Observable<any[]> {
+      return this._http.get<any[]>(this.url + '/product');
+    }
+
+    getProductById(id: number): Observable<any> {
+      return this._http.get<any>(this.url + '/product/' + id);
+    }
+
+    // Category methods
+    getCategories(): Observable<any[]> {
+      return this._http.get<any[]>(this.url + '/category');
+    }
+
+    getCategoryById(id: number): Observable<any> {
+      return this._http.get<any>(this.url + '/category/' + id);
+    }
+
+    // Brand methods
+    getBrands(): Observable<any[]> {
+      return this._http.get<any[]>(this.url + '/brand');
     }
     
     // updateOrder(total: Number){
