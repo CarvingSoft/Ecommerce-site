@@ -39,7 +39,21 @@ export class ViewCartComponent {
     this.orderTotal = total;
     return total;
   }
-  
+
+  calculateSubtotal(): number {
+    let subtotal = 0;
+    for (const item of this.cartList) {
+      if (item.product && typeof item.product.price === 'number' && typeof item.quantity === 'number') {
+        subtotal += (item.product.price as number) * (item.quantity as number);
+      }
+    }
+    return subtotal;
+  }
+
+  calculateTax(): number {
+    const subtotal = this.calculateSubtotal();
+    return Math.round(subtotal * 0.18); // 18% tax
+  }
   
 
   cartList: Cart []=[]
